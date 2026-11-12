@@ -142,9 +142,11 @@ p{margin:0}
 .ba-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:28px}
 .ba-head h2{font-size:clamp(40px,5.6vw,84px);line-height:.95;max-width:12ch}
 .ba-head p{max-width:38ch;color:#D9D2C5;font-size:17px}
-.compare{position:relative;aspect-ratio:16/8.5;overflow:hidden;background:#1C1B19;--x:50%;touch-action:pan-y;user-select:none}
-@media (max-width:760px){.compare{aspect-ratio:4/5}}
-.compare canvas,.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);align-items:start}
+@media (max-width:900px){.ba-grid{grid-template-columns:1fr}}
+.compare{position:relative;aspect-ratio:var(--ar,4/3);max-height:82vh;overflow:hidden;background:#1C1B19;--x:50%;touch-action:pan-y;user-select:none;transition:aspect-ratio .5s cubic-bezier(.2,.8,.2,1)}
+.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s ease}
+.compare.loading img{opacity:0}
 .compare .before{clip-path:inset(0 calc(100% - var(--x)) 0 0)}
 .compare .handle{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:var(--nieve);pointer-events:none;z-index:3}
 .compare .knob{position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--sol);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.35)}
@@ -152,10 +154,18 @@ p{margin:0}
 .compare input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:4}
 .compare input[type=range]:focus-visible + .handle .knob{outline:3px solid var(--nieve);outline-offset:4px}
 .tag{position:absolute;top:16px;z-index:2;font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px}
-.tag.l{left:16px;background:rgba(244,239,230,.9);color:var(--montana)}
+.tag.l{left:16px;background:rgba(244,239,230,.92);color:var(--montana)}
 .tag.r{right:16px;background:var(--sol);color:#fff}
-.ba-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:18px;font-size:15px;color:#BDB6A9}
-.ba-foot div{display:flex;flex-wrap:wrap;gap:10px}
+.cases{display:flex;flex-direction:column;gap:10px}
+@media (max-width:900px){.cases{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.case{flex:0 0 78%;scroll-snap-align:start}}
+.case{display:flex;align-items:center;gap:16px;width:100%;padding:10px;text-align:left;background:transparent;border:1.5px solid #4A3530;color:var(--nieve);font:inherit;cursor:pointer;transition:background .3s ease,border-color .3s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+.case:hover{border-color:#8A6A60;transform:translateX(4px)}
+.case img{width:76px;height:76px;object-fit:cover;flex-shrink:0}
+.case span{display:flex;flex-direction:column;gap:4px}
+.case b{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.15}
+.case small{font-size:14px;line-height:1.45;color:#D9D2C5}
+.case[aria-selected="true"]{background:var(--nieve);border-color:var(--nieve);color:var(--montana)}
+.case[aria-selected="true"] small{color:#4A453E}
 
 /* ---------- clients + testimonials (day) ---------- */
 .voices{background:var(--nieve);color:var(--montana);padding:clamp(90px,11vw,160px) var(--gutter)}
@@ -305,23 +315,23 @@ footer nav{display:flex;gap:22px}
   <section class="ba" id="diferencia" data-tone="night" aria-labelledby="ba-title">
     <div class="ba-head">
       <h2 id="ba-title">Mové la línea</h2>
-      <p>El mismo producto, el mismo día. A la izquierda, la foto que cualquiera saca con el celular. A la derecha, la que vende.</p>
+      <p>Lo que nos llega y lo que entregamos. Elegí un caso y deslizá para ver el antes y el después.</p>
     </div>
-    <div class="compare" id="compare" data-drop-pair>
-      <canvas class="after" id="cAfter" aria-hidden="true"></canvas>
-      <canvas class="before" id="cBefore" aria-hidden="true"></canvas>
-      <span class="tag l">Antes</span>
-      <span class="tag r">Después</span>
-      <input type="range" id="baRange" min="0" max="100" value="50" aria-label="Comparar antes y después: deslizá para mover la línea">
-      <div class="handle"><span class="knob"><svg viewBox="0 0 30 30" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 9l-6 6 6 6M19 9l6 6-6 6"/></svg></span></div>
-    </div>
-    <div class="ba-foot">
-      <span>Imágenes de muestra. Cargá un antes y después real para probar con un trabajo suyo.</span>
-      <div>
-        <label class="pick" for="fBefore">Cargar antes</label>
-        <input class="sr-only" type="file" id="fBefore" accept="image/*">
-        <label class="pick" for="fAfter">Cargar después</label>
-        <input class="sr-only" type="file" id="fAfter" accept="image/*">
+    <div class="ba-grid">
+      <div class="compare" id="compare" style="--ar:4/3">
+        <img class="after" id="imgAfter" src="img/gym-despues.jpg" alt="Después: clase de gimnasio con adultos mayores y un nene, llena de energía">
+        <img class="before" id="imgBefore" src="img/gym-antes.jpg" alt="Antes: dos adultos mayores con pesas rusas frente a una pared de ladrillos">
+        <span class="tag l">Antes</span>
+        <span class="tag r">Después</span>
+        <input type="range" id="baRange" min="0" max="100" value="50" aria-label="Comparar antes y después: deslizá para mover la línea">
+        <div class="handle"><span class="knob"><svg viewBox="0 0 30 30" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 9l-6 6 6 6M19 9l6 6-6 6"/></svg></span></div>
+      </div>
+      <div class="cases" role="tablist" aria-label="Casos de antes y después" id="cases">
+        <button class="case" role="tab" aria-selected="true" aria-controls="compare" data-case="0"><img src="img/gym-despues.jpg" alt=""><span><b>Entrenar en familia</b><small>Gimnasio: de una foto de clase a una escena con energía y alegría.</small></span></button>
+        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="1"><img src="img/maraton-despues.jpg" alt=""><span><b>Maratón 42K</b><small>De una foto en la cinta a una campaña de entrenamiento.</small></span></button>
+        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="2"><img src="img/anteojos-despues.jpg" alt=""><span><b>Anteojos de sol</b><small>Del escritorio a la nieve: el mismo producto, listo para vender.</small></span></button>
+        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="3"><img src="img/buho-familia-despues.jpg" alt=""><span><b>Peluche: hora de dormir</b><small>De la foto con el celular a la escena que una familia quiere vivir.</small></span></button>
+        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="4"><img src="img/buho-regalo-despues.jpg" alt=""><span><b>Peluche: el regalo</b><small>El mismo producto, contado como el regalo perfecto.</small></span></button>
       </div>
     </div>
   </section>
@@ -637,101 +647,59 @@ footer nav{display:flex;gap:22px}
     });
   });
 
-  /* before / after */
+  /* before / after: real cases */
+  var cases=[
+    {b:'gym-antes',a:'gym-despues',ar:'4/3',bp:'50% 50%',ap:'50% 42%',ba:'Antes: dos adultos mayores con pesas rusas frente a una pared de ladrillos',aa:'Después: clase de gimnasio con adultos mayores y un nene, llena de energía'},
+    {b:'cinta-antes',a:'maraton-despues',ar:'4/5',bp:'50% 40%',ap:'50% 45%',ba:'Antes: mujer corriendo en una cinta del gimnasio',aa:'Después: campaña de entrenamiento para una maratón de 42K'},
+    {b:'anteojos-antes',a:'anteojos-despues',ar:'4/5',bp:'50% 62%',ap:'50% 60%',ba:'Antes: anteojos de sol sobre un estuche en un escritorio',aa:'Después: los mismos anteojos sobre la nieve, con montañas de fondo'},
+    {b:'buho-antes',a:'buho-familia-despues',ar:'1/1',bp:'50% 42%',ap:'40% 50%',ba:'Antes: peluche de búho sostenido con la mano',aa:'Después: una mamá y dos chicos durmiendo abrazados a los peluches'},
+    {b:'buho2-antes',a:'buho-regalo-despues',ar:'1/1',bp:'50% 52%',ap:'55% 50%',ba:'Antes: peluche de búho sobre una cama',aa:'Después: una abuela regala el peluche a su nieto'}
+  ];
   var compare=document.getElementById('compare'), range=document.getElementById('baRange');
-  var cA=document.getElementById('cAfter'), cB=document.getElementById('cBefore');
+  var imgA=document.getElementById('imgAfter'), imgB=document.getElementById('imgBefore');
+  var caseBtns=[].slice.call(document.querySelectorAll('.case'));
   function setX(v){compare.style.setProperty('--x',v+'%');}
   range.addEventListener('input',function(){setX(range.value);hinted=true;});
-  function drawBottle(x,w,h,pro){
-    var cx=w*(pro?.5:.46), base=h*(pro?.8:.84), bh=h*.52, bw=bh*.36;
-    x.save();
-    if(!pro){x.translate(cx,base);x.rotate(-.07);x.translate(-cx,-base);}
-    if(pro){
-      var sh=x.createRadialGradient(cx,base,4,cx,base,bw*1.4);
-      sh.addColorStop(0,'rgba(0,0,0,.55)');sh.addColorStop(1,'rgba(0,0,0,0)');
-      x.fillStyle=sh;x.beginPath();x.ellipse(cx,base,bw*1.4,bw*.28,0,0,Math.PI*2);x.fill();
-    }else{
-      x.fillStyle='rgba(20,20,20,.55)';x.beginPath();x.ellipse(cx+bw*.7,base,bw*.95,bw*.2,0,0,Math.PI*2);x.fill();
-    }
-    var top=base-bh, neck=bw*.38;
-    var gb=x.createLinearGradient(cx-bw/2,0,cx+bw/2,0);
-    if(pro){gb.addColorStop(0,'#160F0D');gb.addColorStop(.3,'#4A2A22');gb.addColorStop(.55,'#2A1915');gb.addColorStop(1,'#0F0A09');}
-    else{gb.addColorStop(0,'#4D4744');gb.addColorStop(1,'#3A3532');}
-    x.fillStyle=gb;
-    x.beginPath();
-    x.moveTo(cx-bw/2,base);x.lineTo(cx-bw/2,top+bh*.36);
-    x.quadraticCurveTo(cx-bw/2,top+bh*.22,cx-neck/2,top+bh*.14);
-    x.lineTo(cx-neck/2,top+bh*.02);x.lineTo(cx+neck/2,top+bh*.02);x.lineTo(cx+neck/2,top+bh*.14);
-    x.quadraticCurveTo(cx+bw/2,top+bh*.22,cx+bw/2,top+bh*.36);x.lineTo(cx+bw/2,base);x.closePath();x.fill();
-    x.fillStyle=pro?'#C8A06A':'#8C8780';x.fillRect(cx-neck/2-2,top-bh*.06,neck+4,bh*.1);
-    var lw=bw*.82, lh=bh*.3, ly=top+bh*.48;
-    x.fillStyle=pro?'#F4EFE6':'#CFCBC4';x.fillRect(cx-lw/2,ly,lw,lh);
-    x.fillStyle=pro?'#C8402F':'#9B7B74';x.beginPath();x.arc(cx,ly+lh*.38,lh*.15,0,Math.PI*2);x.fill();
-    x.fillStyle=pro?'#1C1B19':'#6E6A66';
-    x.beginPath();x.moveTo(cx-lw*.32,ly+lh*.62);x.lineTo(cx-lw*.12,ly+lh*.3);x.lineTo(cx,ly+lh*.47);x.lineTo(cx+lw*.12,ly+lh*.24);x.lineTo(cx+lw*.32,ly+lh*.62);x.closePath();x.fill();
-    x.fillRect(cx-lw*.3,ly+lh*.74,lw*.6,lh*.06);
-    if(pro){
-      var hl=x.createLinearGradient(cx-bw/2,0,cx-bw/2+bw*.22,0);
-      hl.addColorStop(0,'rgba(255,220,190,0)');hl.addColorStop(.5,'rgba(255,220,190,.55)');hl.addColorStop(1,'rgba(255,220,190,0)');
-      x.fillStyle=hl;x.fillRect(cx-bw/2+bw*.05,top+bh*.3,bw*.2,bh*.66);
-      x.globalAlpha=.16;x.save();x.translate(0,base*2);x.scale(1,-1);
-      x.fillStyle='#4A2A22';x.fillRect(cx-bw/2,base-bh*.4,bw,bh*.4);x.restore();x.globalAlpha=1;
-    }
-    x.restore();
+  cases.forEach(function(c){[c.a,c.b].forEach(function(n){var i=new Image();i.src='img/'+n+'.jpg';});});
+  function showCase(i){
+    var c=cases[i];
+    caseBtns.forEach(function(btn,k){btn.setAttribute('aria-selected',k===i?'true':'false');btn.tabIndex=k===i?0:-1;});
+    compare.classList.add('loading');
+    setTimeout(function(){
+      imgA.src='img/'+c.a+'.jpg'; imgA.alt=c.aa; imgA.style.objectPosition=c.ap;
+      imgB.src='img/'+c.b+'.jpg'; imgB.alt=c.ba; imgB.style.objectPosition=c.bp;
+      compare.style.setProperty('--ar',c.ar);
+      setX(50); range.value=50;
+      compare.classList.remove('loading');
+    }, reduce?0:220);
   }
-  function prep(c){var r=c.getBoundingClientRect(),d=Math.min(2,window.devicePixelRatio||1);c.width=r.width*d;c.height=r.height*d;var x=c.getContext('2d');x.setTransform(d,0,0,d,0,0);return {x:x,w:r.width,h:r.height};}
-  function drawCompare(){
-    if(!compare.classList.contains('custom-after')){
-      var a=prep(cA); if(!a.w) return; var x=a.x,w=a.w,h=a.h;
-      var bg=x.createRadialGradient(w*.5,h*.42,10,w*.5,h*.5,Math.max(w,h)*.75);
-      bg.addColorStop(0,'#D9603F');bg.addColorStop(.35,'#7A2E22');bg.addColorStop(1,'#1C1110');
-      x.fillStyle=bg;x.fillRect(0,0,w,h);
-      x.fillStyle='rgba(242,160,126,.85)';x.beginPath();x.arc(w*.5,h*.38,Math.min(w,h)*.2,0,Math.PI*2);x.fill();
-      var fl=x.createLinearGradient(0,h*.8,0,h);fl.addColorStop(0,'#2A1712');fl.addColorStop(1,'#120B0A');
-      x.fillStyle=fl;x.fillRect(0,h*.8,w,h*.2);
-      drawBottle(x,w,h,true);
-    }
-    if(!compare.classList.contains('custom-before')){
-      var b=prep(cB); if(!b.w) return; var y=b.x,W=b.w,H=b.h;
-      y.fillStyle='#A9A7A1';y.fillRect(0,0,W,H);
-      y.fillStyle='#BDBAB2';y.fillRect(0,H*.72,W,H*.28);
-      var r=mulberry(5);
-      for(var i=0;i<7;i++){y.fillStyle=['#8E8A84','#C9C2B2','#7D8790','#B5A99A'][i%4];y.fillRect(r()*W*.9,H*.25+r()*H*.5,W*(.05+r()*.12),H*(.08+r()*.25));}
-      y.strokeStyle='#3A3836';y.lineWidth=3;y.beginPath();y.moveTo(0,H*.9);y.bezierCurveTo(W*.3,H*.78,W*.5,H*.98,W,H*.86);y.stroke();
-      drawBottle(y,W,H,false);
-      var fl2=y.createRadialGradient(W*.46,H*.45,10,W*.46,H*.45,W*.6);fl2.addColorStop(0,'rgba(255,255,255,.28)');fl2.addColorStop(1,'rgba(255,255,255,0)');
-      y.fillStyle=fl2;y.fillRect(0,0,W,H);
-      y.fillStyle='rgba(120,130,140,.18)';y.fillRect(0,0,W,H);
-    }
-  }
-  function pairFile(input,canvas,cls){
-    input.addEventListener('change',function(){
-      var f=input.files[0]; if(!f) return;
-      var old=compare.querySelector('img.'+canvas.className.split(' ')[0]); if(old) old.remove();
-      var im=new Image(); im.alt=''; im.className=canvas.className; im.src=URL.createObjectURL(f);
-      canvas.style.display='none'; canvas.insertAdjacentElement('afterend',im); compare.classList.add(cls);
+  caseBtns.forEach(function(btn,i){
+    btn.tabIndex=i===0?0:-1;
+    btn.addEventListener('click',function(){showCase(i);});
+    btn.addEventListener('keydown',function(e){
+      var k=e.key,j=null;
+      if(k==='ArrowDown'||k==='ArrowRight') j=(i+1)%caseBtns.length;
+      if(k==='ArrowUp'||k==='ArrowLeft') j=(i-1+caseBtns.length)%caseBtns.length;
+      if(j!==null){e.preventDefault();showCase(j);caseBtns[j].focus();}
     });
-  }
-  pairFile(document.getElementById('fBefore'),cB,'custom-before');
-  pairFile(document.getElementById('fAfter'),cA,'custom-after');
+  });
+  imgA.style.objectPosition=cases[0].ap; imgB.style.objectPosition=cases[0].bp;
   /* one invitation to drag, the first time the slider comes into view */
   var hinted=false;
   function hint(){
     if(hinted||reduce) return; hinted=true;
-    var t0=null, seq=[50,28,72,50];
+    var t0=null, seq=[50,25,75,50];
     function step(ts){
-      if(!t0) t0=ts; var t=(ts-t0)/1800; if(t>=1){setX(50);range.value=50;return;}
+      if(!t0) t0=ts; var t=(ts-t0)/1900; if(t>=1){setX(50);range.value=50;return;}
       var seg=Math.min(2,Math.floor(t*3)), lt=ease((t*3)-seg), v=lerp(seq[seg],seq[seg+1],lt);
       setX(v.toFixed(2)); range.value=v; requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
   if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting&&e.intersectionRatio>.55){hint();io.disconnect();}});},{threshold:[.55]});
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting&&e.intersectionRatio>.5){hint();io.disconnect();}});},{threshold:[.5]});
     io.observe(compare);
   }
-  window.addEventListener('resize',drawCompare);
-  drawCompare();
 
   /* floating CTA: after the hero, hidden at contact */
   var floatBtn=document.getElementById('float'), contactSec=document.getElementById('contacto');
