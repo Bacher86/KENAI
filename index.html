@@ -425,7 +425,7 @@ footer nav{display:flex;gap:22px}
         <h2>¿Qué querés vender?</h2>
         <p>Contanos qué hace tu marca y dónde querés crecer. Te respondemos con una propuesta de producción de fotos.</p>
         <div class="lines">
-          <div><span>Correo</span>[correo@dominio]</div>
+          <div><span>Correo</span><a href="mailto:kenaistudio.arg@gmail.com">kenaistudio.arg@gmail.com</a></div>
           <div><span>WhatsApp</span>[+54 9 …]</div>
           <div><span>Instagram</span>[@kenai.studio]</div>
         </div>
@@ -443,7 +443,7 @@ footer nav{display:flex;gap:22px}
           </div>
         </fieldset>
         <div class="field"><label for="f-msg">Contanos un poco más</label><textarea id="f-msg"></textarea></div>
-        <button class="cta send" type="submit">Enviar consulta</button>
+        <button class="cta send" type="submit">Preparar correo</button>
         <p class="status" id="status" role="status"></p>
       </form>
     </div>
@@ -710,7 +710,11 @@ footer nav{display:flex;gap:22px}
     e.preventDefault();
     var st=document.getElementById('status'), name=document.getElementById('f-nombre').value.trim(), mail=document.getElementById('f-mail').value.trim();
     if(!name||!mail){st.innerHTML='Completá tu nombre y un email o WhatsApp para que podamos responderte.';return;}
-    st.innerHTML='<strong>Este formulario todavía no está conectado.</strong> Cuando publiquen la web, vinculalo a su correo. Mientras tanto, escribinos a [correo@dominio].';
+    var needs=[].slice.call(document.querySelectorAll('.chip[aria-pressed="true"]')).map(function(c){return c.textContent;}).join(', ');
+    var msg=document.getElementById('f-msg').value.trim();
+    var body='Nombre y marca: '+name+'\nContacto: '+mail+(needs?'\nNecesito: '+needs:'')+(msg?'\n\n'+msg:'');
+    window.location.href='mailto:kenaistudio.arg@gmail.com?subject='+encodeURIComponent('Consulta desde la web: '+name)+'&body='+encodeURIComponent(body);
+    st.innerHTML='Se abrió tu correo con la consulta lista para enviar. Si no se abrió, escribinos a <strong>kenaistudio.arg@gmail.com</strong>.';
   });
 })();
 </script>
