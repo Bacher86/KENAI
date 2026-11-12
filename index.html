@@ -198,6 +198,7 @@ p{margin:0}
 .panel-shot svg{width:42%;opacity:.55}
 .panel-shot span{position:absolute;left:14px;bottom:14px;font-size:13px;color:rgba(244,239,230,.9)}
 .note{margin-top:28px;font-size:14px;color:#6B655C}
+.sample{align-self:flex-start;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:#EFE7DA;color:#6B655C}
 
 /* ---------- floating CTA ---------- */
 .float{position:fixed;right:clamp(14px,3vw,32px);bottom:clamp(14px,3vw,32px);z-index:70;display:flex;align-items:center;gap:10px;min-height:52px;padding:0 22px 0 16px;border-radius:999px;background:var(--montana);color:var(--nieve);text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 12px 30px rgba(0,0,0,.3);transform:translateY(140%);transition:transform .5s cubic-bezier(.2,.8,.2,1),background .3s ease}
@@ -394,26 +395,27 @@ footer nav{display:flex;gap:22px}
     </div>
     <div class="clients">
       <div class="logos" role="tablist" aria-label="Clientes" id="logos">
-        <button class="logo-btn" role="tab" aria-selected="true" aria-controls="panel" data-i="0"><b>[Marca 1]</b><small>[Rubro]</small></button>
-        <button class="logo-btn" role="tab" aria-selected="false" aria-controls="panel" data-i="1"><b>[Marca 2]</b><small>[Rubro]</small></button>
-        <button class="logo-btn" role="tab" aria-selected="false" aria-controls="panel" data-i="2"><b>[Marca 3]</b><small>[Rubro]</small></button>
-        <button class="logo-btn" role="tab" aria-selected="false" aria-controls="panel" data-i="3"><b>[Marca 4]</b><small>[Rubro]</small></button>
-        <button class="logo-btn" role="tab" aria-selected="false" aria-controls="panel" data-i="4"><b>[Marca 5]</b><small>[Rubro]</small></button>
-        <button class="logo-btn" role="tab" aria-selected="false" aria-controls="panel" data-i="5"><b>[Marca 6]</b><small>[Rubro]</small></button>
+        <button class="logo-btn" role="tab" aria-selected="true" aria-controls="panel" data-i="0"><b>Gimnasio Andes</b><small>Gimnasio</small></button>
+        <button class="logo-btn" role="tab" aria-selected="false" aria-controls="panel" data-i="1"><b>Ruta 42</b><small>Running</small></button>
+        <button class="logo-btn" role="tab" aria-selected="false" aria-controls="panel" data-i="2"><b>Óptica Glaciar</b><small>Anteojos</small></button>
+        <button class="logo-btn" role="tab" aria-selected="false" aria-controls="panel" data-i="3"><b>Nido</b><small>Peluches</small></button>
+        <button class="logo-btn" role="tab" aria-selected="false" aria-controls="panel" data-i="4"><b>Pan de Altura</b><small>Panadería</small></button>
+        <button class="logo-btn" role="tab" aria-selected="false" aria-controls="panel" data-i="5"><b>Café Cumbre</b><small>Cafetería</small></button>
       </div>
       <div class="panel" role="tabpanel" id="panel" aria-live="polite">
         <div class="panel-body" id="panelBody">
-          <blockquote id="pQuote">[Comentario real de este cliente: qué cambió en sus ventas o en cómo lo ve su público después de trabajar con ustedes.]</blockquote>
+          <span class="sample">Comentario de ejemplo</span>
+          <blockquote id="pQuote">Con las fotos nuevas, la gente nos escribe diciendo que se siente invitada a entrenar. Ese mes sumamos más inscriptos que en todo el verano.</blockquote>
           <div class="did" id="pDid"><span>Fotografía de producto</span><span>Retoque</span></div>
-          <div class="who"><span class="avatar" aria-hidden="true">N</span><span id="pWho"><strong>[Nombre Apellido]</strong>, [Cargo] en [Marca 1]</span></div>
+          <div class="who"><span class="avatar" aria-hidden="true" id="pAv">L</span><span id="pWho"><strong>Laura M.</strong>, dueña de Gimnasio Andes</span></div>
         </div>
         <div class="panel-shot" id="pShot" style="--tone:#5B3A2E">
           <svg viewBox="0 40 200 105" aria-hidden="true"><circle cx="100" cy="74" r="24" fill="#F4EFE6"/><path fill="#F4EFE6" d="M10 140 L70 58 L100 96 L132 46 L190 140 Z"/></svg>
-          <span id="pShotLabel">[Foto del trabajo para Marca 1]</span>
+          <span id="pShotLabel">Trabajo para Gimnasio Andes</span>
         </div>
       </div>
     </div>
-    <p class="note">Reemplazá las marcas con logos reales y los comentarios con opiniones reales, con permiso de cada cliente.</p>
+    <p class="note">Marcas y comentarios de ejemplo para la maqueta. Reemplazalos por clientes reales antes de publicar.</p>
   </section>
 
   <!-- CONTACT -->
@@ -615,23 +617,17 @@ footer nav{display:flex;gap:22px}
   window.addEventListener('load',onResize);
 
   /* clients + testimonials */
-  var clients=[
-    {did:['Fotografía de producto','Retoque'],tone:'#5B3A2E'},
-    {did:['Fotos de lanzamiento','Retoque'],tone:'#1C1B19'},
-    {did:['Catálogo','E-commerce'],tone:'#C8402F'},
-    {did:['Fotos para redes','Mensual'],tone:'#8A847A'},
-    {did:['Gastronomía','Fotografía'],tone:'#2E2124'},
-    {did:['Retratos','Retoque'],tone:'#6E3426'}
-  ];
+  var clients=[{"m": "Gimnasio Andes", "r": "Gimnasio", "q": "Con las fotos nuevas, la gente nos escribe diciendo que se siente invitada a entrenar. Ese mes sumamos más inscriptos que en todo el verano.", "n": "Laura M.", "c": "dueña", "did": ["Fotografía", "Retoque"], "tone": "#5B3A2E"}, {"m": "Ruta 42", "r": "Running", "q": "Pasamos de una foto en la cinta a una campaña que de verdad motiva. Las inscripciones a la maratón se llenaron antes de lo previsto.", "n": "Martín G.", "c": "organizador", "did": ["Fotos de lanzamiento", "Retoque"], "tone": "#1C1B19"}, {"m": "Óptica Glaciar", "r": "Anteojos", "q": "Los mismos anteojos de siempre, pero ahora la gente los quiere. Las fotos en la nieve cambiaron por completo nuestra tienda online.", "n": "Sofía R.", "c": "encargada de marketing", "did": ["Producto", "E-commerce"], "tone": "#C8402F"}, {"m": "Nido", "r": "Peluches", "q": "Nos mostraron el producto como lo vive una familia. Ahora cada publicación genera consultas y los peluches se agotan.", "n": "Carolina P.", "c": "fundadora", "did": ["Fotos para redes", "Mensual"], "tone": "#8A847A"}, {"m": "Pan de Altura", "r": "Panadería", "q": "Nuestro pan siempre fue bueno, pero en las fotos no se notaba. Desde que trabajamos con Kenai, los pedidos por Instagram se duplicaron.", "n": "Diego L.", "c": "socio", "did": ["Gastronomía", "Fotografía"], "tone": "#2E2124"}, {"m": "Café Cumbre", "r": "Cafetería", "q": "Rápidos, prolijos y con mucha onda. Las fotos del local y del menú hicieron que la gente venga a probar.", "n": "Valentina S.", "c": "dueña", "did": ["Retratos", "Retoque"], "tone": "#6E3426"}];
   var tabs=[].slice.call(document.querySelectorAll('.logo-btn')), pBody=document.getElementById('panelBody');
   function showClient(i){
-    var c=clients[i], n=i+1;
+    var c=clients[i];
     tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i?'true':'false');t.tabIndex=k===i?0:-1;});
-    document.getElementById('pQuote').textContent='[Comentario real de Marca '+n+': qué cambió en sus ventas o en cómo lo ve su público después de trabajar con ustedes.]';
+    document.getElementById('pQuote').textContent=c.q;
     document.getElementById('pDid').innerHTML=c.did.map(function(d){return '<span>'+d+'</span>';}).join('');
-    document.getElementById('pWho').innerHTML='<strong>[Nombre Apellido]</strong>, [Cargo] en [Marca '+n+']';
+    document.getElementById('pWho').innerHTML='<strong>'+c.n+'</strong>, '+c.c+' de '+c.m;
+    document.getElementById('pAv').textContent=c.n.charAt(0);
     document.getElementById('pShot').style.setProperty('--tone',c.tone);
-    document.getElementById('pShotLabel').textContent='[Foto del trabajo para Marca '+n+']';
+    document.getElementById('pShotLabel').textContent='Trabajo para '+c.m;
     pBody.classList.remove('swap'); void pBody.offsetWidth; pBody.classList.add('swap');
   }
   tabs.forEach(function(t,i){
