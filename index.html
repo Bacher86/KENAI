@@ -73,6 +73,14 @@ p{margin:0}
 .frame img,.frame video{z-index:1}
 .frame-tag{position:absolute;left:18px;top:16px;z-index:2;font-size:13px;color:#F4EFE6;background:rgba(14,15,21,.55);padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px)}
 .has-media .frame-tag{display:none}
+.reel{overflow:hidden;margin:0 calc(var(--gutter)*-1);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.reel-track{display:flex;width:max-content;animation:reel 50s linear infinite}
+.reel:hover .reel-track,.reel:focus-within .reel-track{animation-play-state:paused}
+.reel-set{display:flex}
+.reel img{height:clamp(220px,32vw,380px);width:auto;margin-right:16px;object-fit:cover;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.reel img:hover{transform:scale(1.03)}
+@keyframes reel{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.reel{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.reel-set[aria-hidden="true"]{display:none}}
 .still-cap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:18px;font-size:15px;color:#BDB6A9}
 .pick{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid #5A514C;color:var(--nieve);font-weight:600;font-size:14px;cursor:pointer;transition:border-color .25s ease}
 .pick:hover{border-color:var(--nieve)}
@@ -278,13 +286,15 @@ footer nav{display:flex;gap:22px}
   </section>
 
   <!-- BIG PHOTO -->
-  <section class="still" aria-label="Foto principal" data-tone="night">
-    <div class="frame has-media" id="mainFrame">
-      <canvas id="still" aria-hidden="true"></canvas>
-      <img src="" data-img="anteojos-despues" alt="Anteojos de sol sobre un tronco nevado, con montañas de fondo">
+  <section class="still" aria-label="Producciones destacadas" data-tone="night">
+    <div class="reel" aria-label="Producciones destacadas">
+      <div class="reel-track">
+        <div class="reel-set"><img src="" data-img="maraton-despues" alt="Corredora festejando con su medalla frente al espejo del gimnasio"><img src="" data-img="buho-familia-despues" alt="Mamá y dos chicos durmiendo abrazados a sus peluches"><img src="" data-img="anteojos-despues" alt="Anteojos de sol sobre la nieve con montañas de fondo"><img src="" data-img="gym-despues" alt="Adultos mayores entrenando mientras un nene salta en el reflejo"><img src="" data-img="buho-regalo-despues" alt="Abuela regalando un peluche de búho a su nieto"></div>
+        <div class="reel-set" aria-hidden="true"><img src="" data-img="maraton-despues" alt=""><img src="" data-img="buho-familia-despues" alt=""><img src="" data-img="anteojos-despues" alt=""><img src="" data-img="gym-despues" alt=""><img src="" data-img="buho-regalo-despues" alt=""></div>
+      </div>
     </div>
     <div class="still-cap">
-      <span>Anteojos de sol: del escritorio a la nieve. Una sola imagen que hace querer el producto.</span>
+      <span>Algunas de nuestras producciones recientes.</span>
       <a class="pick" href="#diferencia">Ver el antes y después</a>
     </div>
   </section>
@@ -495,6 +505,7 @@ footer nav{display:flex;gap:22px}
   /* sample still: a dawn landscape rendered in canvas */
   var still=document.getElementById('still');
   function drawStill(){
+    if(!still) return;
     var r=still.getBoundingClientRect(), d=Math.min(2,window.devicePixelRatio||1);
     var w=r.width, h=r.height; if(!w||!h) return;
     still.width=w*d; still.height=h*d;
@@ -578,8 +589,7 @@ footer nav{display:flex;gap:22px}
       heroCopy.style.opacity=String(1-hp*.9);
     }
     /* still zoom */
-    var fr=frame.getBoundingClientRect(), fp=clamp((vh-fr.top)/(vh+fr.height),0,1);
-    if(!reduce){[].forEach.call(frame.querySelectorAll('canvas,img,video'),function(m){m.style.transform='scale('+(1.04-fp*.04)+')';});}
+    if(frame&&!reduce){var fr=frame.getBoundingClientRect(), fp=clamp((vh-fr.top)/(vh+fr.height),0,1);[].forEach.call(frame.querySelectorAll('canvas,img,video'),function(m){m.style.transform='scale('+(1.04-fp*.04)+')';});}
     /* story words */
     if(words.length&&!reduce){
       var sr=story.getBoundingClientRect(), sp=clamp((vh*.82-sr.top)/(sr.height+vh*.25),0,1), lit=Math.round(sp*words.length);
