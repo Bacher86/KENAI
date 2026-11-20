@@ -230,7 +230,8 @@ textarea{resize:vertical;min-height:110px}
 .chip[aria-pressed="true"]{background:var(--montana);border-color:var(--montana);color:var(--nieve)}
 .send{align-self:flex-start;min-height:56px;padding:0 34px;font-size:17px}
 .status{font-size:15px;color:#4A453E;min-height:1.5em}
-.status strong{color:var(--montana)}
+.status strong,.status a{color:var(--montana)}
+.send:disabled{opacity:.6;cursor:wait}
 
 footer{background:var(--montana);color:var(--nieve);padding:44px var(--gutter);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px;font-size:15px}
 footer .brand svg .m{fill:var(--nieve)}
