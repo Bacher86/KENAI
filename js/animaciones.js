@@ -250,38 +250,22 @@
 
   /* chips + form */
   document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')==='true'?'false':'true');});});
-  /* El formulario manda la consulta por FormSubmit (formsubmit.co) al mail de Kenai.
-     Para cambiar el mail que recibe las consultas, cambialo en FORM_EMAIL. */
-  var FORM_EMAIL='kenaistudio.arg@gmail.com';
-  var form=document.getElementById('form'), sendBtn=form.querySelector('.send');
+  /* El formulario manda la consulta por FormSubmit (formsubmit.co) a kenaistudio.arg@gmail.com.
+     Para cambiar el mail que recibe las consultas, cambialo en el action del <form> en index.html. */
+  var form=document.getElementById('form'), sendBtn=form.querySelector('.send'), st=document.getElementById('status');
+  if(/[?&]enviado=1/.test(location.search)){
+    st.textContent='¡Gracias! Recibimos tu consulta y te respondemos a la brevedad.';
+    history.replaceState(null,'',location.pathname+'#contacto');
+  }
   form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var st=document.getElementById('status'), name=document.getElementById('f-nombre').value.trim(), mail=document.getElementById('f-mail').value.trim();
-    if(!name||!mail){st.textContent='Completá tu nombre y un email o WhatsApp para que podamos responderte.';return;}
-    if(document.getElementById('f-honey').value){return;}
+    var name=document.getElementById('f-nombre').value.trim(), mail=document.getElementById('f-mail').value.trim();
+    if(!name||!mail){e.preventDefault();st.textContent='Completá tu nombre y un email o WhatsApp para que podamos responderte.';return;}
+    if(document.getElementById('f-honey').value){e.preventDefault();return;}
     var needs=[].slice.call(document.querySelectorAll('.chip[aria-pressed="true"]')).map(function(c){return c.textContent;}).join(', ');
-    var msg=document.getElementById('f-msg').value.trim();
-    sendBtn.disabled=true; sendBtn.textContent='Enviando…'; st.textContent='';
-    fetch('https://formsubmit.co/ajax/'+FORM_EMAIL,{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({
-        'Nombre y marca':name,
-        'Email o WhatsApp':mail,
-        'Qué necesita':needs||'No marcó ninguna opción',
-        'Mensaje':msg||'(sin mensaje)',
-        _subject:'Consulta desde la web: '+name,
-        _template:'table'
-      })
-    }).then(function(r){return r.json().then(function(d){if(!r.ok||String(d.success)!=='true')throw new Error(d.message||'error');});})
-    .then(function(){
-      form.reset();
-      document.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false');});
-      st.textContent='¡Gracias, '+name.split(' ')[0]+'! Recibimos tu consulta y te respondemos a la brevedad.';
-    })
-    .catch(function(){
-      st.innerHTML='No pudimos enviar la consulta. Probá de nuevo o escribinos a <a href="mailto:'+FORM_EMAIL+'">'+FORM_EMAIL+'</a>.';
-    })
-    .then(function(){sendBtn.disabled=false; sendBtn.textContent='Enviar consulta';});
+    document.getElementById('f-needs').value=needs||'No marcó ninguna opción';
+    document.getElementById('f-subject').value='Consulta desde la web: '+name;
+    document.getElementById('f-next').value=location.origin+location.pathname+'?enviado=1#contacto';
+    sendBtn.textContent='Enviando…';
   });
+  window.addEventListener('pageshow',function(){sendBtn.textContent='Enviar consulta';});
 })();

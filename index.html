@@ -198,9 +198,9 @@
           <div><span>Instagram</span>[@kenai.studio]</div>
         </div>
       </div>
-      <form id="form" novalidate>
-        <div class="field"><label for="f-nombre">Nombre y marca</label><input type="text" id="f-nombre" autocomplete="name"></div>
-        <div class="field"><label for="f-mail">Email o WhatsApp</label><input type="text" id="f-mail" autocomplete="email"></div>
+      <form id="form" action="https://formsubmit.co/kenaistudio.arg@gmail.com" method="POST" novalidate>
+        <div class="field"><label for="f-nombre">Nombre y marca</label><input type="text" id="f-nombre" name="Nombre y marca" autocomplete="name"></div>
+        <div class="field"><label for="f-mail">Email o WhatsApp</label><input type="text" id="f-mail" name="Email o WhatsApp" autocomplete="email"></div>
         <fieldset class="field">
           <legend>¿Qué necesitás?</legend>
           <div class="chips">
@@ -210,7 +210,12 @@
             <button type="button" class="chip" aria-pressed="false">Retratos</button>
           </div>
         </fieldset>
-        <div class="field"><label for="f-msg">Contanos un poco más</label><textarea id="f-msg"></textarea></div>
+        <div class="field"><label for="f-msg">Contanos un poco más</label><textarea id="f-msg" name="Mensaje"></textarea></div>
+        <input type="hidden" name="Qué necesita" id="f-needs">
+        <input type="hidden" name="_subject" id="f-subject" value="Consulta desde la web">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" id="f-next" value="https://bacher86.github.io/KENAI/?enviado=1#contacto">
         <input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="cta send" type="submit">Enviar consulta</button>
         <p class="status" id="status" role="status"></p>
