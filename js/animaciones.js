@@ -154,23 +154,24 @@
   /* clients + testimonials */
   // Comentarios de clientes: m = marca, r = rubro, q = comentario, n = nombre, c = cargo, did = etiquetas, tone = color
   var clients=[
-    {"m":  "r": "Gimnasio", "q": "Con las fotos nuevas, la gente nos escribe diciendo que se siente invitada a entrenar. Ese mes sumamos más inscriptos que en todo el verano."},
-    {"m":  "r": "Running", "q": "Pasamos de una foto en la cinta a una campaña que de verdad motiva. Las inscripciones a la maratón se llenaron antes de lo previsto."},
-    {"m":  "r": "Anteojos", "q": "Los mismos anteojos de siempre, pero ahora la gente los quiere. Las fotos en la nieve cambiaron por completo nuestra tienda online."},
-    {"m":  "r": "Peluches", "q": "Nos mostraron el producto como lo vive una familia. Ahora cada publicación genera consultas y los peluches se agotan."},
-    {"m": "r": "Panadería", "q": "Nuestro pan siempre fue bueno, pero en las fotos no se notaba. Desde que trabajamos con Kenai, los pedidos por Instagram se duplicaron."},
-    {"m": "r": "Cafetería", "q": "Rápidos, prolijos y con mucha onda. Las fotos del local y del menú hicieron que la gente venga a probar.", "n": "Valentina S."}
+    {"m": "", "r": "Gimnasio", "q": "Con las fotos nuevas, la gente nos escribe diciendo que se siente invitada a entrenar. Ese mes sumamos más inscriptos que en todo el verano.", "n": "", "c": "", "did": [], "tone": "#1C1B19"},
+    {"m": "", "r": "Running", "q": "Pasamos de una foto en la cinta a una campaña que de verdad motiva. Las inscripciones a la maratón se llenaron antes de lo previsto.", "n": "", "c": "", "did": [], "tone": "#1C1B19"},
+    {"m": "", "r": "Anteojos", "q": "Los mismos anteojos de siempre, pero ahora la gente los quiere. Las fotos en la nieve cambiaron por completo nuestra tienda online.", "n": "", "c": "", "did": [], "tone": "#1C1B19"},
+    {"m": "", "r": "Peluches", "q": "Nos mostraron el producto como lo vive una familia. Ahora cada publicación genera consultas y los peluches se agotan.", "n": "", "c": "", "did": [], "tone": "#1C1B19"},
+    {"m": "", "r": "Panadería", "q": "Nuestro pan siempre fue bueno, pero en las fotos no se notaba. Desde que trabajamos con Kenai, los pedidos por Instagram se duplicaron.", "n": "", "c": "", "did": [], "tone": "#1C1B19"},
+    {"m": "", "r": "Cafetería", "q": "Rápidos, prolijos y con mucha onda. Las fotos del local y del menú hicieron que la gente venga a probar.", "n": "", "c": "", "did": [], "tone": "#1C1B19"}
   ];
   var tabs=[].slice.call(document.querySelectorAll('.logo-btn')), pBody=document.getElementById('panelBody');
   function showClient(i){
-    var c=clients[i];
+    var c=clients[i]; if(!c) return;
     tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i?'true':'false');t.tabIndex=k===i?0:-1;});
-    document.getElementById('pQuote').textContent=c.q;
-    document.getElementById('pDid').innerHTML=c.did.map(function(d){return '<span>'+d+'</span>';}).join('');
-    document.getElementById('pWho').innerHTML='<strong>'+c.n+'</strong>, '+c.c+' de '+c.m;
-    document.getElementById('pAv').textContent=c.n.charAt(0);
-    document.getElementById('pShot').style.setProperty('--tone',c.tone);
-    document.getElementById('pShotLabel').textContent='Trabajo para '+c.m;
+    document.getElementById('pQuote').textContent=c.q||'';
+    document.getElementById('pDid').innerHTML=(c.did||[]).map(function(d){return '<span>'+d+'</span>';}).join('');
+    var who=[c.n?'<strong>'+c.n+'</strong>':'',c.c,c.m?'de '+c.m:''].filter(Boolean).join(c.n&&c.c?', ':' ');
+    document.getElementById('pWho').innerHTML=who;
+    document.getElementById('pAv').textContent=(c.n||c.m||c.r||'K').charAt(0);
+    document.getElementById('pShot').style.setProperty('--tone',c.tone||'#1C1B19');
+    document.getElementById('pShotLabel').textContent=c.m?'Trabajo para '+c.m:(c.r||'');
     pBody.classList.remove('swap'); void pBody.offsetWidth; pBody.classList.add('swap');
   }
   tabs.forEach(function(t,i){

@@ -42,6 +42,6 @@ La forma más fácil es subir la foto nueva a `img/` con **exactamente el mismo 
 
 ## Pendientes antes de difundir
 
-- Reemplazar los comentarios de ejemplo por comentarios reales de clientes.
+- La sección Clientes está oculta (atributo `hidden` en `index.html`). Cuando tengan comentarios reales, cargalos en `js/animaciones.js`, cambiá las marcas en `index.html` (buscá `logo-btn`), borrá `hidden` y volvé a agregar el link "Clientes" al menú.
 - Completar WhatsApp e Instagram en la sección de contacto (los textos entre corchetes).
 - Subir las fotos en alta resolución.
