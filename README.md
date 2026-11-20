@@ -1,11 +1,47 @@
 # Kenai Studio
 
-Sitio web de Kenai Studio: producción de fotos que hacen vender.
+Sitio web de Kenai Studio: producción de fotos que hacen vender. Se publica solo con GitHub Pages cada vez que guardás un cambio en la rama `main` (tarda uno o dos minutos).
 
-Es una página única (`index.html`) sin dependencias de compilación. Las fotos de los casos de antes y después están en `img/`. Para verla, abrí `index.html` en el navegador o publicala con GitHub Pages.
+## Qué hay en cada archivo
 
-## Pendientes antes de publicar
+| Archivo | Qué tiene | Qué podés cambiar ahí |
+|---|---|---|
+| `index.html` | Todos los textos de la página | Títulos, párrafos, servicios, nombres de los casos, datos de contacto |
+| `css/estilos.css` | El diseño | Colores (arriba de todo, en `:root`), tamaños, espaciados |
+| `js/animaciones.js` | Animaciones y partes interactivas | Comentarios de clientes y casos de antes y después |
+| `img/` | Las fotos | Subir fotos nuevas o reemplazar las que están |
 
-- Reemplazar la imagen de muestra y las producciones por fotos reales.
-- Completar marcas, comentarios de clientes, ciudad y datos de contacto (los textos entre corchetes).
-- Conectar el formulario de contacto a un correo o servicio de formularios.
+## Cómo editar desde GitHub
+
+1. Abrí el archivo y tocá el lápiz (Edit) arriba a la derecha.
+2. Para encontrar un texto, usá Ctrl+F (Cmd+F en Mac) y buscá una palabra que veas en la página.
+3. Cambiá solo el texto, sin tocar lo que está entre `<` y `>` ni las comillas.
+4. Tocá **Commit changes** y confirmá.
+
+### Dónde está cada sección en `index.html`
+
+Buscá estas palabras con Ctrl+F:
+
+- Encabezado y menú: `class="top"`
+- Portada ("Hacete notar"): `id="inicio"`
+- Carrusel de fotos: `class="still"`
+- Quiénes somos y Qué hacemos: `id="nosotros"`
+- Antes y después: `id="diferencia"`
+- Producciones: `id="producciones"`
+- Clientes: `id="clientes"`
+- Contacto: `id="contacto"`
+- Pie de página: `<footer`
+
+### Comentarios de clientes
+
+Están en `js/animaciones.js`. Buscá `var clients` y cambiá el nombre de la marca, el comentario y la persona de cada uno, respetando las comillas y las comas.
+
+### Reemplazar una foto
+
+La forma más fácil es subir la foto nueva a `img/` con **exactamente el mismo nombre** que la que querés reemplazar (por ejemplo, `gym-despues.jpg`). En la carpeta `img/` tocá **Add file → Upload files** y subila.
+
+## Pendientes antes de difundir
+
+- Reemplazar los comentarios de ejemplo por comentarios reales de clientes.
+- Completar WhatsApp e Instagram en la sección de contacto (los textos entre corchetes).
+- Subir las fotos en alta resolución.
