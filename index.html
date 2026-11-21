@@ -60,23 +60,26 @@
 
   <!-- STORY + ABOUT + SERVICES -->
   <section class="story-sec" id="nosotros" data-tone="night">
-    <p class="story">Hay marcas excelentes que nadie ve. Productos buenos que se pierden en el scroll, en la góndola, en la tienda online. Nosotros trabajamos para ese segundo en el que alguien se detiene, mira y decide comprar.</p>
+    <p class="story">¿No estás cansado de ver siempre la misma foto del producto? La misma mesa, la misma luz, el mismo ángulo que usa todo el mundo. Cuando todos se ven igual, nadie se destaca.</p>
 
     <div class="about">
       <h2>Quiénes somos</h2>
       <div class="about-text">
-        <p>Somos Kenai Studio, un equipo de fotógrafos, retocadores y directores de arte de [Ciudad]. Nos especializamos en una sola cosa: fotos que venden.</p>
-        <p>Antes de encender una luz, entendemos qué vendés, a quién y dónde. Después producimos, retocamos y entregamos las fotos listas para publicar, cada una pensada para el lugar donde va a vivir.</p>
+        <p>Somos Kenai Studio, un estudio de marketing y publicidad, y venimos a cambiar eso. Queremos ayudarte a diferenciarte. Queremos que la gente te note.</p>
+        <p>Hoy se decide qué comprar mirando una pantalla. Antes de entrar a tu local, la gente ya vio tus productos en Instagram, en WhatsApp o en una publicidad, y en ese segundo decide si frena o sigue de largo. Un producto bueno con una foto más del montón pasa desapercibido. El mismo producto, con una producción pensada para tu marca, se vuelve irresistible.</p>
       </div>
     </div>
 
     <div class="services">
-      <h2>Qué hacemos</h2>
+      <h2>Trabajamos de dos formas</h2>
       <ul class="svc">
-        <li><h3>Fotografía de producto</h3><p>Fotos para e-commerce, catálogos y marketplaces que muestran cada detalle y dan ganas de comprar.</p></li>
-        <li><h3>Fotos para redes</h3><p>Posteos, carruseles e historias producidos todos los meses, con una estética propia y constante.</p></li>
-        <li><h3>Retoque profesional</h3><p>Color, luz, piel, fondos y limpieza de cada imagen, para que se vea igual de bien en la web que impresa.</p></li>
+        <li><h3>Creamos tu campaña de cero</h3><p>Pensamos la idea, el concepto y la estética, y producimos todas las fotos para que tu marca tenga una imagen propia, que no se parezca a la de nadie.</p></li>
+        <li><h3>Producimos lo que ya tenés en mente</h3><p>¿Ya sabés qué campaña querés hacer? Nos contás y nos encargamos de la producción y el retoque para que tus productos se vean como merecen.</p></li>
       </ul>
+      <div class="svc-close">
+        <p>El objetivo siempre es el mismo: que tu producto se destaque y que cada foto se convierta en una venta.</p>
+        <a class="cta" href="#contacto">Pedí tu propuesta sin compromiso</a>
+      </div>
     </div>
   </section>
 
@@ -84,23 +87,31 @@
   <section class="ba" id="diferencia" data-tone="night" aria-labelledby="ba-title">
     <div class="ba-head">
       <h2 id="ba-title">Mové la línea</h2>
-      <p>Lo que nos llega y lo que entregamos. Elegí un caso y deslizá para ver el antes y el después.</p>
+      <p>Lo que nos llega y lo que entregamos. Elegí un caso, mirá sus versiones y deslizá para ver el antes y el después.</p>
     </div>
     <div class="ba-grid">
+      <div class="ba-stage">
       <div class="compare" id="compare">
-        <img class="after" id="imgAfter" src="img/gym-despues.jpg" alt="Después: clase de gimnasio con adultos mayores y un nene, llena de energía">
-        <img class="before" id="imgBefore" src="img/gym-antes.jpg" alt="Antes: dos adultos mayores con pesas rusas frente a una pared de ladrillos">
+        <img class="after" id="imgAfter" src="img/calzado-despues-1.jpg" alt="Después: modelo sosteniendo la sandalia frente a su cara, con el título Nueva colección">
+        <img class="before" id="imgBefore" src="img/calzado-antes.jpg" alt="Antes: foto con celular de una mujer probándose las sandalias blancas en la calle">
         <span class="tag l">Antes</span>
         <span class="tag r">Después</span>
         <input type="range" id="baRange" min="0" max="100" value="50" aria-label="Comparar antes y después: deslizá para mover la línea">
         <div class="handle"><span class="knob"><svg viewBox="0 0 30 30" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 9l-6 6 6 6M19 9l6 6-6 6"/></svg></span></div>
       </div>
+      <div class="versions" id="versions" role="group" aria-label="Versiones de este caso">
+        <p class="versions-label">Mismo producto, otras versiones</p>
+        <div class="versions-row" id="versionsRow"></div>
+      </div>
+      </div>
       <div class="cases" role="tablist" aria-label="Casos de antes y después" id="cases">
-        <button class="case" role="tab" aria-selected="true" aria-controls="compare" data-case="0"><img src="img/gym-despues.jpg" alt=""><span><b>Entrenar en familia</b><small>Gimnasio: de una foto de clase a una escena con energía y alegría.</small></span></button>
-        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="1"><img src="img/maraton-despues.jpg" alt=""><span><b>Maratón 42K</b><small>De una foto en la cinta a una campaña de entrenamiento.</small></span></button>
-        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="2"><img src="img/anteojos-despues.jpg" alt=""><span><b>Anteojos de sol</b><small>Del escritorio a la nieve: el mismo producto, listo para vender.</small></span></button>
-        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="3"><img src="img/buho-familia-despues.jpg" alt=""><span><b>Peluche: hora de dormir</b><small>De la foto con el celular a la escena que una familia quiere vivir.</small></span></button>
-        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="4"><img src="img/buho-regalo-despues.jpg" alt=""><span><b>Peluche: el regalo</b><small>El mismo producto, contado como el regalo perfecto.</small></span></button>
+        <button class="case" role="tab" aria-selected="true" aria-controls="compare" data-case="0"><img src="img/calzado-despues-1.jpg" alt=""><span><b>Sandalias: nueva colección</b><small>De una foto con el celular a cinco piezas de campaña para el mismo par.</small></span></button>
+        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="1"><img src="img/reloj-despues-6.jpg" alt=""><span><b>Reloj deportivo</b><small>De la foto de catálogo a seis escenas con actitud.</small></span></button>
+        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="2"><img src="img/gym-despues.jpg" alt=""><span><b>Entrenar en familia</b><small>Gimnasio: de una foto de clase a una escena con energía y alegría.</small></span></button>
+        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="3"><img src="img/maraton-despues.jpg" alt=""><span><b>Maratón 42K</b><small>De una foto en la cinta a una campaña de entrenamiento.</small></span></button>
+        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="4"><img src="img/anteojos-despues.jpg" alt=""><span><b>Anteojos de sol</b><small>Del escritorio a la nieve: el mismo producto, listo para vender.</small></span></button>
+        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="5"><img src="img/buho-familia-despues.jpg" alt=""><span><b>Peluche: hora de dormir</b><small>De la foto con el celular a la escena que una familia quiere vivir.</small></span></button>
+        <button class="case" role="tab" aria-selected="false" aria-controls="compare" data-case="6"><img src="img/buho-regalo-despues.jpg" alt=""><span><b>Peluche: el regalo</b><small>El mismo producto, contado como el regalo perfecto.</small></span></button>
       </div>
     </div>
   </section>
@@ -195,7 +206,7 @@
         <div class="lines">
           <div><span>Correo</span><a href="mailto:kenaistudio.arg@gmail.com">kenaistudio.arg@gmail.com</a></div>
           <div><span>WhatsApp</span>[+54 9 …]</div>
-          <div><span>Instagram</span>[@kenai.studio]</div>
+          <div><span>Instagram</span><a href="https://www.instagram.com/kenai_studiook/" target="_blank" rel="noopener">@kenai_studiook</a></div>
         </div>
       </div>
       <form id="form" action="https://formsubmit.co/kenaistudio.arg@gmail.com" method="POST" novalidate>
@@ -204,6 +215,7 @@
         <fieldset class="field">
           <legend>¿Qué necesitás?</legend>
           <div class="chips">
+            <button type="button" class="chip" aria-pressed="false">Campaña completa</button>
             <button type="button" class="chip" aria-pressed="false">Fotos de producto</button>
             <button type="button" class="chip" aria-pressed="false">Retoque</button>
             <button type="button" class="chip" aria-pressed="false">Fotos para redes</button>
@@ -232,7 +244,7 @@
     <span>KENAI STUDIO</span>
   </a>
   <span>Hacete notar.</span>
-  <nav aria-label="Redes"><a href="#contacto">Instagram</a><a href="#contacto">LinkedIn</a></nav>
+  <nav aria-label="Redes"><a href="https://www.instagram.com/kenai_studiook/" target="_blank" rel="noopener">Instagram</a><a href="#contacto">LinkedIn</a></nav>
 </footer>
 
 <script src="js/animaciones.js"></script>

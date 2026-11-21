@@ -185,30 +185,75 @@
     });
   });
 
-  /* before / after: casos reales (las fotos están en la carpeta img) */
+  /* Antes y después: casos reales (las fotos están en la carpeta img).
+     Cada caso tiene una foto de antes (b) y una o más versiones de después (v).
+     bp/ap = qué parte de la foto se ve (horizontal vertical); ba/aa = descripción de la foto. */
   var cases=[
-    {b:'gym-antes',a:'gym-despues',ar:'1/1',bp:'50% 50%',ap:'50% 38%',ba:'Antes: dos adultos mayores con pesas rusas frente a una pared de ladrillos',aa:'Después: clase de gimnasio con adultos mayores y un nene, llena de energía'},
-    {b:'cinta-antes',a:'maraton-despues',ar:'1/1',bp:'50% 35%',ap:'50% 40%',ba:'Antes: mujer corriendo en una cinta del gimnasio',aa:'Después: campaña de entrenamiento para una maratón de 42K'},
-    {b:'anteojos-antes',a:'anteojos-despues',ar:'1/1',bp:'50% 64%',ap:'50% 62%',ba:'Antes: anteojos de sol sobre un estuche en un escritorio',aa:'Después: los mismos anteojos sobre la nieve, con montañas de fondo'},
-    {b:'buho-antes',a:'buho-familia-despues',ar:'1/1',bp:'50% 42%',ap:'40% 50%',ba:'Antes: peluche de búho sostenido con la mano',aa:'Después: una mamá y dos chicos durmiendo abrazados a los peluches'},
-    {b:'buho2-antes',a:'buho-regalo-despues',ar:'1/1',bp:'50% 52%',ap:'55% 50%',ba:'Antes: peluche de búho sobre una cama',aa:'Después: una abuela regala el peluche a su nieto'}
+    {b:'calzado-antes',bp:'50% 60%',ba:'Antes: foto con celular de una mujer probándose las sandalias blancas en la calle',v:[
+      {a:'calzado-despues-1',ap:'50% 50%',aa:'Después: modelo sosteniendo la sandalia frente a su cara, con el título Nueva colección'},
+      {a:'calzado-despues-2',ap:'50% 50%',aa:'Después: modelo sonriente con sombrero sentada sobre un muro blanco, fondo amarillo y turquesa'},
+      {a:'calzado-despues-3',ap:'50% 50%',aa:'Después: las sandalias bajando una escalera de piedra, con el texto El par para toda ocasión'},
+      {a:'calzado-despues-4',ap:'50% 50%',aa:'Después: mujer en un café con las sandalias puestas y los usos del calzado'},
+      {a:'calzado-despues-5',ap:'50% 50%',aa:'Después: la sandalia sobre fondo bordó con detalles de hebilla, brillo, plantilla y taco'}
+    ]},
+    {b:'reloj-antes',bp:'50% 50%',ba:'Antes: foto de catálogo del reloj sobre fondo blanco con un salpicón de agua',v:[
+      {a:'reloj-despues-6',ap:'50% 50%',aa:'Después: el reloj mojado sobre una roca, entre salpicaduras de agua y luz verde'},
+      {a:'reloj-despues-1',ap:'50% 50%',aa:'Después: el reloj sobre el piso mojado de un gimnasio, con una pesa rusa de fondo'},
+      {a:'reloj-despues-2',ap:'50% 50%',aa:'Después: mujer entrenando con sogas de batalla y el reloj en la muñeca'},
+      {a:'reloj-despues-3',ap:'50% 50%',aa:'Después: hombre transpirado bajo un puente al atardecer, mostrando el reloj'},
+      {a:'reloj-despues-4',ap:'50% 50%',aa:'Después: el reloj en la muñeca de un corredor bajo la lluvia, en una calle con luces de neón'},
+      {a:'reloj-despues-5',ap:'50% 50%',aa:'Después: corredora mirando el reloj bajo la lluvia de noche'}
+    ]},
+    {b:'gym-antes',bp:'50% 50%',ba:'Antes: dos adultos mayores con pesas rusas frente a una pared de ladrillos',v:[{a:'gym-despues',ap:'50% 38%',aa:'Después: clase de gimnasio con adultos mayores y un nene, llena de energía'}]},
+    {b:'cinta-antes',bp:'50% 35%',ba:'Antes: mujer corriendo en una cinta del gimnasio',v:[{a:'maraton-despues',ap:'50% 40%',aa:'Después: campaña de entrenamiento para una maratón de 42K'}]},
+    {b:'anteojos-antes',bp:'50% 64%',ba:'Antes: anteojos de sol sobre un estuche en un escritorio',v:[{a:'anteojos-despues',ap:'50% 62%',aa:'Después: los mismos anteojos sobre la nieve, con montañas de fondo'}]},
+    {b:'buho-antes',bp:'50% 42%',ba:'Antes: peluche de búho sostenido con la mano',v:[{a:'buho-familia-despues',ap:'12% 50%',aa:'Después: una mamá y dos chicos durmiendo abrazados a los peluches'}]},
+    {b:'buho2-antes',bp:'50% 52%',ba:'Antes: peluche de búho sobre una cama',v:[{a:'buho-regalo-despues',ap:'30% 50%',aa:'Después: una abuela regala el peluche a su nieto'}]}
   ];
   var compare=document.getElementById('compare'), range=document.getElementById('baRange');
   var imgA=document.getElementById('imgAfter'), imgB=document.getElementById('imgBefore');
   var caseBtns=[].slice.call(document.querySelectorAll('.case'));
+  var versions=document.getElementById('versions'), versionsRow=document.getElementById('versionsRow');
+  var current=0;
   function setX(v){compare.style.setProperty('--x',v+'%');}
   range.addEventListener('input',function(){setX(range.value);hinted=true;});
-  
-  function showCase(i){
-    var c=cases[i];
-    caseBtns.forEach(function(btn,k){btn.setAttribute('aria-selected',k===i?'true':'false');btn.tabIndex=k===i?0:-1;});
+  /* precarga las fotos de un caso para que cambiar de versión sea instantáneo */
+  function preload(c){[c.b].concat(c.v.map(function(x){return x.a;})).forEach(function(n){var im=new Image();im.src='img/'+n+'.jpg';});}
+
+  function swap(fn){
     compare.classList.add('loading');
-    setTimeout(function(){
-      imgA.src='img/'+c.a+'.jpg'; imgA.alt=c.aa; imgA.style.objectPosition=c.ap;
+    setTimeout(function(){fn();compare.classList.remove('loading');}, reduce?0:220);
+  }
+  function showVersion(k,keepLine){
+    var c=cases[current], v=c.v[k];
+    [].forEach.call(versionsRow.children,function(btn,j){btn.setAttribute('aria-pressed',j===k?'true':'false');});
+    swap(function(){
+      imgA.src='img/'+v.a+'.jpg'; imgA.alt=v.aa; imgA.style.objectPosition=v.ap;
+      if(!keepLine){setX(50); range.value=50;}
+    });
+  }
+  function buildVersions(c){
+    versionsRow.innerHTML='';
+    versions.hidden=c.v.length<2;
+    c.v.forEach(function(v,k){
+      var btn=document.createElement('button');
+      btn.type='button'; btn.className='version'; btn.setAttribute('aria-pressed',k===0?'true':'false');
+      btn.setAttribute('aria-label','Versión '+(k+1)+' de '+c.v.length);
+      var im=document.createElement('img'); im.src='img/'+v.a+'.jpg'; im.alt=''; im.loading='lazy';
+      btn.appendChild(im);
+      btn.addEventListener('click',function(){showVersion(k,true);});
+      versionsRow.appendChild(btn);
+    });
+  }
+  function showCase(i){
+    current=i; var c=cases[i], v=c.v[0];
+    caseBtns.forEach(function(btn,k){btn.setAttribute('aria-selected',k===i?'true':'false');btn.tabIndex=k===i?0:-1;});
+    buildVersions(c); preload(c);
+    swap(function(){
+      imgA.src='img/'+v.a+'.jpg'; imgA.alt=v.aa; imgA.style.objectPosition=v.ap;
       imgB.src='img/'+c.b+'.jpg'; imgB.alt=c.ba; imgB.style.objectPosition=c.bp;
       setX(50); range.value=50;
-      compare.classList.remove('loading');
-    }, reduce?0:220);
+    });
   }
   caseBtns.forEach(function(btn,i){
     btn.tabIndex=i===0?0:-1;
@@ -220,7 +265,8 @@
       if(j!==null){e.preventDefault();showCase(j);caseBtns[j].focus();}
     });
   });
-  imgA.style.objectPosition=cases[0].ap; imgB.style.objectPosition=cases[0].bp;
+  imgA.style.objectPosition=cases[0].v[0].ap; imgB.style.objectPosition=cases[0].bp;
+  buildVersions(cases[0]); preload(cases[0]);
   /* one invitation to drag, the first time the slider comes into view */
   var hinted=false;
   function hint(){
