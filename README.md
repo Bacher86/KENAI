@@ -45,3 +45,7 @@ La forma más fácil es subir la foto nueva a `img/` con **exactamente el mismo 
 - La sección Clientes está oculta (atributo `hidden` en `index.html`). Cuando tengan comentarios reales, cargalos en `js/animaciones.js`, cambiá las marcas en `index.html` (buscá `logo-btn`), borrá `hidden` y volvé a agregar el link "Clientes" al menú.
 - Completar WhatsApp e Instagram en la sección de contacto (los textos entre corchetes).
 - Subir las fotos en alta resolución.
+
+## Si después de un cambio la página se ve rara o mezclada
+
+El navegador puede guardar una copia vieja de `css/estilos.css` o `js/animaciones.js` hasta por 10 minutos. Esperá un poco y recargá con Ctrl+Shift+R (en el celular, cerrá y abrí la pestaña). Si editás alguno de esos dos archivos, cambiá también el número que aparece después de `?v=` en `index.html` (al final de `estilos.css?v=` o de `animaciones.js?v=`), cualquier número nuevo sirve, así todos los visitantes cargan la versión nueva al instante.
