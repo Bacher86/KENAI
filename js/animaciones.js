@@ -204,6 +204,12 @@
       {a:'reloj-despues-4',ap:'50% 50%',aa:'Después: el reloj en la muñeca de un corredor bajo la lluvia, en una calle con luces de neón'},
       {a:'reloj-despues-5',ap:'50% 50%',aa:'Después: corredora mirando el reloj bajo la lluvia de noche'}
     ]},
+    {b:'short-antes',bp:'50% 50%',ba:'Antes: ficha de catálogo del short deportivo lila con talles y colores',v:[
+      {a:'short-despues-1',ap:'50% 50%',aa:'Después: corredora sonriente cruzando la calle al atardecer con el short lila'},
+      {a:'short-despues-2',ap:'50% 50%',aa:'Después: mujer elongando de noche en una pista mojada con el short negro'},
+      {a:'short-despues-3',ap:'50% 50%',aa:'Después: corredora bajo la lluvia en la ciudad con el short marrón y el celular en el bolsillo'},
+      {a:'short-despues-4',ap:'50% 50%',aa:'Después: mujer corriendo en un parque al amanecer con el short gris'}
+    ]},
     {b:'gym-antes',bp:'50% 50%',ba:'Antes: dos adultos mayores con pesas rusas frente a una pared de ladrillos',v:[{a:'gym-despues',ap:'50% 38%',aa:'Después: clase de gimnasio con adultos mayores y un nene, llena de energía'}]},
     {b:'cinta-antes',bp:'50% 35%',ba:'Antes: mujer corriendo en una cinta del gimnasio',v:[{a:'maraton-despues',ap:'50% 40%',aa:'Después: campaña de entrenamiento para una maratón de 42K'}]},
     {b:'anteojos-antes',bp:'50% 64%',ba:'Antes: anteojos de sol sobre un estuche en un escritorio',v:[{a:'anteojos-despues',ap:'50% 62%',aa:'Después: los mismos anteojos sobre la nieve, con montañas de fondo'}]},
