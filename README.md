@@ -1,6 +1,8 @@
 # Kenai Studio
 
-Sitio web de Kenai Studio: producción de fotos que hacen vender. Se publica solo con GitHub Pages cada vez que guardás un cambio en la rama `main` (tarda uno o dos minutos).
+Sitio web de Kenai Studio: producción de fotos que hacen vender.
+
+Dirección: **https://kenaistudio.com.ar** (el dominio está en DonWeb y apunta a GitHub Pages; el archivo `CNAME` mantiene la conexión, no lo borres). Se publica solo con GitHub Pages cada vez que guardás un cambio en la rama `main` (tarda uno o dos minutos).
 
 ## Qué hay en cada archivo
 
@@ -43,7 +45,7 @@ La forma más fácil es subir la foto nueva a `img/` con **exactamente el mismo 
 ## Pendientes antes de difundir
 
 - La sección Clientes está oculta (atributo `hidden` en `index.html`). Cuando tengan comentarios reales, cargalos en `js/animaciones.js`, cambiá las marcas en `index.html` (buscá `logo-btn`), borrá `hidden` y volvé a agregar el link "Clientes" al menú.
-- Completar WhatsApp e Instagram en la sección de contacto (los textos entre corchetes).
+- Completar el WhatsApp en la sección de contacto (el texto entre corchetes).
 - Subir las fotos en alta resolución.
 
 ## Si después de un cambio la página se ve rara o mezclada
