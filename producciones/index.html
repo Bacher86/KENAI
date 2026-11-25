@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  /* Todas las rutas de esta página parten de la raíz del sitio, así funcionan
+     tanto en /producciones/ como en /producciones/nombre-de-campana */
+  (function(){var p=location.pathname,i=p.indexOf('/producciones');document.write('<base href="'+(i>-1?p.slice(0,i):'')+'/">');})();
+</script>
+<title>Producciones · Kenai Studio</title>
+<meta name="description" content="Portfolio de campañas y producciones de fotos de Kenai Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/estilos.css?v=0ffca4fc">
+<link rel="stylesheet" href="../css/producciones.css?v=398e36b6">
+</head>
+<body class="pr-body">
+
+<header class="top" id="top" data-tone="night">
+  <a class="brand" href="./" aria-label="Kenai Studio, inicio">
+    <svg viewBox="0 40 200 105" aria-hidden="true"><circle cx="100" cy="74" r="24" fill="#C8402F"/><path class="m" d="M10 140 L70 58 L100 96 L132 46 L190 140 Z"/></svg>
+    <span>KENAI</span>
+  </a>
+  <nav class="nav" aria-label="Secciones">
+    <a href="./#nosotros">Quiénes somos</a>
+    <a class="nav-keep" href="producciones/" data-link aria-current="page">Producciones</a>
+    <a class="cta" href="./#contacto">Hablemos</a>
+  </nav>
+</header>
+
+<main id="app" class="pr-main" tabindex="-1">
+  <!-- Vista general: grilla de campañas -->
+  <section class="pr-view" id="viewGrid" aria-labelledby="gridTitle">
+    <div class="pr-head">
+      <h1 id="gridTitle">Producciones</h1>
+      <p>Cada campaña empieza con un producto y termina contando una historia que vende. Elegí una para ver cómo la produjimos.</p>
+    </div>
+    <div class="pr-filters" id="filters" role="group" aria-label="Filtrar campañas por rubro"></div>
+    <p class="pr-notice" id="notFound" hidden>No encontramos esa campaña. Estas son todas las que tenemos publicadas.</p>
+    <div class="pr-grid" id="grid"></div>
+  </section>
+
+  <!-- Vista interna: una campaña -->
+  <article class="pr-view" id="viewCampaign" hidden>
+    <a class="pr-back" href="producciones/" data-link>← Volver a Producciones</a>
+    <header class="pr-c-head">
+      <div class="pr-c-text">
+        <span class="pr-tag" id="cTag"></span>
+        <h1 id="cTitle"></h1>
+        <div class="pr-c-desc" id="cDesc"></div>
+        <p class="pr-ia" id="cIa" hidden>Escenas potenciadas con inteligencia artificial a partir del producto real.</p>
+      </div>
+      <figure class="pr-before" id="cBefore" hidden>
+        <button type="button" class="pr-before-btn" id="cBeforeBtn" aria-label="Ver en grande la foto de antes">
+          <img id="cBeforeImg" alt="">
+        </button>
+        <figcaption>Así nos llegó el producto</figcaption>
+      </figure>
+    </header>
+    <section aria-label="Fotos de la campaña">
+      <p class="pr-count" id="cCount"></p>
+      <div class="pr-gallery" id="cGallery"></div>
+    </section>
+    <section class="pr-cta" aria-labelledby="ctaTitle">
+      <div>
+        <h2 id="ctaTitle">¿Querés una campaña así para tu marca?</h2>
+        <p>Contanos qué vendés y armamos una propuesta a medida, sin compromiso.</p>
+      </div>
+      <div class="pr-cta-actions">
+        <a class="cta" href="./#contacto">Hablemos de tu marca</a>
+        <a class="pr-next" id="cNext" href="producciones/" data-link></a>
+      </div>
+    </section>
+  </article>
+</main>
+
+<!-- Visor ampliado -->
+<dialog class="lb" id="lightbox" aria-label="Visor de fotos">
+  <div class="lb-inner">
+    <p class="lb-count" id="lbCount" aria-live="polite"></p>
+    <button type="button" class="lb-close" id="lbClose" aria-label="Cerrar visor">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+    <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg>
+    </button>
+    <figure class="lb-fig">
+      <img id="lbImg" alt="">
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Foto siguiente">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg>
+    </button>
+  </div>
+</dialog>
+
+<a class="float" id="float" href="./#contacto"><i aria-hidden="true"></i>Hablemos de tu marca</a>
+
+<footer>
+  <a class="brand" href="./" aria-label="Volver al inicio">
+    <svg viewBox="0 40 200 105" aria-hidden="true"><circle cx="100" cy="74" r="24" fill="#C8402F"/><path class="m" d="M10 140 L70 58 L100 96 L132 46 L190 140 Z"/></svg>
+    <span>KENAI STUDIO</span>
+  </a>
+  <span>Hacete notar.</span>
+  <nav aria-label="Redes"><a href="https://www.instagram.com/kenai_studiook/" target="_blank" rel="noopener">Instagram</a><a href="./#contacto">Contacto</a></nav>
+</footer>
+
+<script src="../data/campanas.js?v=c5954f38"></script>
+<script src="../js/producciones.js?v=f05b671f"></script>
+</body>
+</html>

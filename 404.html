@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  /* GitHub Pages muestra esta página cuando una dirección no existe.
+     Si la dirección es de una campaña (/producciones/nombre), la manda a la
+     página de Producciones, que muestra esa campaña con su dirección linda. */
+  (function(){
+    var p = location.pathname, i = p.indexOf('/producciones/');
+    var raiz = i > -1 ? p.slice(0, i) : '';
+    if (i > -1){
+      var slug = p.slice(i + 14).replace(/\/+$/, '').split('/')[0];
+      if (slug){ location.replace(raiz + '/producciones/?c=' + encodeURIComponent(decodeURIComponent(slug)) + location.hash); }
+    }
+    document.write('<base href="' + raiz + '/">');
+  })();
+</script>
+<title>Página no encontrada · Kenai Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/estilos.css?v=0ffca4fc">
+<style>
+  body{background:#1E1412;min-height:100vh;display:grid;place-items:center;padding:40px var(--gutter);text-align:center}
+  .nf svg{width:120px;margin:0 auto 34px}
+  .nf h1{font-size:clamp(40px,7vw,88px);line-height:1}
+  .nf p{margin:18px auto 34px;color:#D9D2C5;max-width:40ch}
+  .nf div{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .nf .ghost{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;border:1px solid rgba(244,239,230,.3);text-decoration:none;font-weight:600;font-size:15px}
+</style>
+</head>
+<body>
+  <main class="nf">
+    <svg viewBox="0 40 200 105" aria-hidden="true"><circle cx="100" cy="74" r="24" fill="#C8402F"/><path d="M10 140 L70 58 L100 96 L132 46 L190 140 Z" fill="#F4EFE6"/></svg>
+    <h1>Esta página no existe</h1>
+    <p>Puede que el link esté mal escrito o que la página se haya movido.</p>
+    <div><a class="cta" href="./">Ir al inicio</a><a class="ghost" href="producciones/">Ver producciones</a></div>
+  </main>
+</body>
+</html>

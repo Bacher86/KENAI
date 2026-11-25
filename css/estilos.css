@@ -39,7 +39,8 @@ p{margin:0}
 .nav a:not(.cta):hover::after{transform:scaleX(1)}
 .cta{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:999px;background:var(--sol);color:#fff;text-decoration:none;font-weight:600;font-size:15px;border:0;cursor:pointer;font-family:var(--body);transition:transform .25s ease, background .25s ease}
 .cta:hover{background:#B33626;transform:translateY(-2px)}
-@media (max-width:760px){.nav a:not(.cta){display:none}}
+@media (max-width:760px){.nav a:not(.cta):not(.nav-keep){display:none}.nav{gap:16px}}
+@media (max-width:440px){.brand span{display:none}.nav .cta{padding:0 18px}}
 
 /* ---------- hero (night) ---------- */
 .hero{position:relative;min-height:min(94vh,920px);padding-top:clamp(110px,15vh,170px);display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(180deg,#090A10 0%,#12121A 55%,#1B1519 100%);isolation:isolate}
@@ -125,6 +126,18 @@ p{margin:0}
 .play::after{content:"";border-left:16px solid var(--montana);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
 .work h3{font-size:22px;font-weight:700}
 .work p{font-size:15px;color:#D9D2C5;max-width:34ch}
+.works-intro{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.works-all-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;border:1px solid rgba(244,239,230,.35);color:var(--nieve);text-decoration:none;font-weight:600;font-size:15px;transition:background-color .25s ease,border-color .25s ease,color .25s ease}
+.works-all-btn:hover{background:var(--nieve);border-color:var(--nieve);color:var(--montana)}
+.work-link{text-decoration:none;color:inherit}
+.work-more{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(180deg,transparent,rgba(20,12,11,.82));font-size:15px;font-weight:600;opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease}
+.work-link:hover .work-more,.work-link:focus-visible .work-more{opacity:1;transform:none}
+@media (hover:none){.work-more{opacity:1;transform:none}}
+.work-all{justify-content:flex-end;gap:6px;height:clamp(280px,46vh,440px);aspect-ratio:4/5;padding:26px;border:1px solid rgba(244,239,230,.22);text-decoration:none;color:var(--nieve);transition:border-color .3s ease,background-color .3s ease}
+.work-all:hover{border-color:var(--sol);background:rgba(200,64,47,.08)}
+.work-all-n{font-family:var(--display);font-weight:700;font-size:clamp(64px,8vw,110px);line-height:.9}
+.work-all-t{font-size:16px;color:#D9D2C5}
+.work-all-b{margin-top:18px;font-weight:600;color:#F2A598}
 .works-bar{margin:0 var(--gutter);height:2px;background:rgba(244,239,230,.15);display:none}
 .works-bar i{display:block;height:100%;width:0;background:var(--sol)}
 .works.is-pinned .works-pin{position:sticky;top:0;height:100vh;justify-content:center;overflow:hidden;padding:80px 0 40px}

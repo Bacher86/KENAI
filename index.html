@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilos.css?v=b42b4fc9">
+<link rel="stylesheet" href="css/estilos.css?v=0ffca4fc">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
   </a>
   <nav class="nav" aria-label="Secciones">
     <a href="#nosotros">Quiénes somos</a>
-    <a href="#producciones">Producciones</a>
+    <a class="nav-keep" href="producciones/">Producciones</a>
     <a class="cta" href="#contacto">Hablemos</a>
   </nav>
 </header>
@@ -122,30 +122,12 @@
     <div class="works-pin">
       <div class="works-head">
         <h2>Producciones</h2>
-        <p>Algunas de nuestras producciones: el producto, contado como una historia que vende.</p>
+        <div class="works-intro">
+          <p>Algunas de nuestras producciones: el producto, contado como una historia que vende.</p>
+          <a class="works-all-btn" href="producciones/">Ver todas las campañas</a>
+        </div>
       </div>
-      <div class="track" id="track">
-        <article class="work has-media">
-          <div class="work-media" style="--ar:3/4"><img src="img/maraton-despues.jpg" alt="Corredora festejando con su medalla frente al espejo del gimnasio"></div>
-          <h3>Maratón 42K</h3><p>Campaña de entrenamiento para una maratón, producida a partir de una foto en la cinta.</p>
-        </article>
-        <article class="work has-media">
-          <div class="work-media" style="--ar:3/4"><img src="img/gym-despues.jpg" alt="Adultos mayores entrenando con pesas mientras un nene salta en el reflejo"></div>
-          <h3>Entrenar en familia</h3><p>Fotos para un gimnasio que transmiten energía y ganas de sumarse.</p>
-        </article>
-        <article class="work has-media">
-          <div class="work-media" style="--ar:2/3"><img src="img/anteojos-despues.jpg" alt="Anteojos de sol sobre la nieve con montañas de fondo"></div>
-          <h3>Anteojos de sol</h3><p>Fotos de producto en un escenario que cuenta la historia de la marca.</p>
-        </article>
-        <article class="work has-media">
-          <div class="work-media" style="--ar:5/4"><img src="img/buho-familia-despues.jpg" alt="Mamá y dos chicos durmiendo abrazados a sus peluches"></div>
-          <h3>Peluche: hora de dormir</h3><p>El producto dentro de la escena que una familia quiere vivir.</p>
-        </article>
-        <article class="work has-media">
-          <div class="work-media" style="--ar:5/4"><img src="img/buho-regalo-despues.jpg" alt="Abuela regalando un peluche de búho a su nieto"></div>
-          <h3>Peluche: el regalo</h3><p>La misma pieza, contada como el regalo perfecto.</p>
-        </article>
-      </div>
+      <div class="track" id="track"></div>
       <div class="works-bar" aria-hidden="true"><i id="worksBar"></i></div>
     </div>
   </section>
@@ -248,6 +230,8 @@
   <nav aria-label="Redes"><a href="https://www.instagram.com/kenai_studiook/" target="_blank" rel="noopener">Instagram</a><a href="#contacto">LinkedIn</a></nav>
 </footer>
 
+<script src="data/campanas.js?v=c5954f38"></script>
+<script src="js/inicio-producciones.js?v=86df3511"></script>
 <script src="js/animaciones.js?v=477c75c1"></script>
 </body>
 </html>

@@ -4,6 +4,13 @@ Sitio web de Kenai Studio: producción de fotos que hacen vender.
 
 Dirección: **https://kenaistudio.com.ar** (el dominio está en DonWeb y apunta a GitHub Pages; el archivo `CNAME` mantiene la conexión, no lo borres). Se publica solo con GitHub Pages cada vez que guardás un cambio en la rama `main` (tarda uno o dos minutos).
 
+## Producciones (portfolio de campañas)
+
+- Página: **kenaistudio.com.ar/producciones** · cada campaña: **/producciones/nombre-de-la-campana**
+- Todas las campañas están en **`data/campanas.js`**. Para sumar una, seguí las instrucciones que están arriba de todo en ese archivo (o la guía "Cómo subir una campaña nueva").
+- Las campañas con `destacada: true` aparecen en el inicio (máximo 4).
+- No toques `producciones/index.html`, `js/producciones.js` ni `404.html`: se arman solos a partir de los datos.
+
 ## Qué hay en cada archivo
 
 | Archivo | Qué tiene | Qué podés cambiar ahí |
