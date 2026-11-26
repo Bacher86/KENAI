@@ -49,52 +49,42 @@ var CATEGORIAS = ['Indumentaria', 'Deportes', 'Accesorios', 'Hogar', 'Gastronom�
 
 var CAMPANAS = [
    {
-id: 10,
-slug: 'camisalino'
-,
-titulo: 'Antonio Saiello'
-,
-categoria: 'Indumentaria'
-,
-descripcionCorta: 'Camisa de lino de Antonio Saiello
-'
-,
-descripcionCampana: [
-'Hay prendas que no solo visten, sino que te transportan. Nuestra camisa de lino puro italiano captura la esencia más auténtica del verano en la Costa Amalfitana: la brisa cálida del mar Tirreno, una terraza frente a Positano al atardecer y el brillo de un Aperol Spritz helado en buena compañía.
-'
-,
-'La línea Sorrento de Antonio Saiello nace para quienes buscan frescura real sin resignar sastrería impecable.
-'
-],
-portada: 'camisalino-portada.jpg'
-,
-antes: 'camisalino-antes.jpg'
-,
-fotos: [
-  { 
-    src: 'camisalino-portada.jpg', 
-    alt: 'Camisa de lino beige crudo Antonio Saiello apoyada sobre balaustrada de piedra al atardecer frente al mar en Sorrento junto a una copa de Aperol Spritz, un limón y una revista' 
+    id: 10,
+    slug: 'camisalino',
+    titulo: 'Antonio Saiello',
+    categoria: 'Indumentaria',
+    descripcionCorta: 'Camisa de lino de Antonio Saiello.',
+    descripcionCampana: [
+      'Hay prendas que no solo visten, sino que te transportan. Nuestra camisa de lino puro italiano captura la esencia más auténtica del verano en la Costa Amalfitana: la brisa cálida del mar Tirreno, una terraza frente a Positano al atardecer y el brillo de un Aperol Spritz helado en buena compañía.',
+      'La línea Sorrento de Antonio Saiello nace para quienes buscan frescura real sin resignar sastrería impecable.'
+    ],
+    portada: 'camisalino-portada.jpg',
+    antes: 'camisalino-antes.jpg', // Borrá esta línea si no subiste camisalino-antes.jpg a img/
+    fotos: [
+      { 
+        src: 'camisalino-portada.jpg', 
+        alt: 'Camisa de lino beige crudo Antonio Saiello apoyada sobre balaustrada de piedra al atardecer frente al mar en Sorrento junto a una copa de Aperol Spritz, un limón y una revista' 
+      },
+      { 
+        src: 'camisalino1.jpg', 
+        alt: 'Camisa de lino beige crudo Antonio Saiello desplegada sobre banco de piedra caliza bajo la luz del sol mediterráneo con gafas de sol de carey y limones de Sorrento' 
+      },
+      { 
+        src: 'camisalino2.jpg', 
+        alt: 'Camisa de lino beige crudo Antonio Saiello descansando sobre un sillón de cuero marrón en un interior elegante de estilo italiano junto a libros de la Costa Amalfitana' 
+      },
+      { 
+        src: 'camisalino3.jpg', 
+        alt: 'Modelo masculino apoyado en un muro de piedra en la Costa Amalfitana vistiendo la camisa de lino beige crudo Antonio Saiello con pantalones de lino blanco y gafas de sol' 
+      },
+      { 
+        src: 'camisalino4.jpg', 
+        alt: 'Modelo sentado en una terraza panorámica frente a Positano disfrutando de un Aperol Spritz mientras viste la camisa de lino beige crudo Antonio Saiello con mangas remangadas' 
+      }
+    ],
+    destacada: false,
+    ia: true
   },
-  { 
-    src: 'camisalino1.jpg', 
-    alt: 'Camisa de lino beige crudo Antonio Saiello desplegada sobre banco de piedra caliza bajo la luz del sol mediterráneo con gafas de sol de carey y limones de Sorrento' 
-  },
-  { 
-    src: 'camisalino2.jpg', 
-    alt: 'Camisa de lino beige crudo Antonio Saiello descansando sobre un sillón de cuero marrón en un interior elegante de estilo italiano junto a libros de la Costa Amalfitana' 
-  },
-  { 
-    src: 'camisalino3.jpg', 
-    alt: 'Modelo masculino apoyado en un muro de piedra en la Costa Amalfitana vistiendo la camisa de lino beige crudo Antonio Saiello con pantalones de lino blanco y gafas de sol' 
-  },
-  { 
-    src: 'camisalino4.jpg', 
-    alt: 'Modelo sentado en una terraza panorámica frente a Positano disfrutando de un Aperol Spritz mientras viste la camisa de lino beige crudo Antonio Saiello con mangas remangadas' 
-  }
-],
-destacada: false,
-ia: false
-},
 
    
   {
