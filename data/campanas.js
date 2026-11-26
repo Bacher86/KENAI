@@ -59,7 +59,7 @@ var CAMPANAS = [
       'La línea Sorrento de Antonio Saiello nace para quienes buscan frescura real sin resignar sastrería impecable.'
     ],
     portada: 'camisalino-portada.jpg',
-    antes: 'camisalino-antes.jpg', // Borrá esta línea si no subiste camisalino-antes.jpg a img/
+    antes: 'camisalino-previo.jpeg',
     fotos: [
       { 
         src: 'camisalino-portada.jpg', 
@@ -85,8 +85,6 @@ var CAMPANAS = [
     destacada: false,
     ia: true
   },
-
-   
   {
     id: 9,
     slug: 'remeras-masashi',

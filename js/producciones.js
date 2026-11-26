@@ -7,6 +7,13 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- datos ---------- */
+  var datosOk = Array.isArray(window.CAMPANAS);
+  if (!datosOk){
+    /* data/campanas.js tiene un error de escritura (falta una coma, una comilla o una llave) */
+    var g = document.getElementById('grid');
+    if (g) g.innerHTML = '<p class="pr-notice" style="margin:0">No pudimos cargar las campañas en este momento. Volvé a intentar en unos minutos.</p>';
+    if (window.console) console.error('Kenai: data/campanas.js tiene un error de sintaxis. Revisá comillas, comas y llaves de la última campaña.');
+  }
   var lista = (window.CAMPANAS || []).filter(function(c){ return c && c.slug && c.titulo; });
   var orden = window.CATEGORIAS || [];
   function fotosDe(c){
@@ -32,6 +39,7 @@
     return { cats: cats, cuenta: usadas };
   }
   function renderFiltros(){
+    if (!datosOk) return;
     var info = categoriasPresentes();
     var html = '<button type="button" class="pr-filter" data-cat="Todos" aria-pressed="' + (filtro === 'Todos') + '">Todos<span>' + lista.length + '</span></button>';
     info.cats.forEach(function(k){
@@ -48,6 +56,7 @@
 
   /* ---------- grilla ---------- */
   function renderGrid(){
+    if (!datosOk) return;
     var items = lista.filter(function(c){ return filtro === 'Todos' || c.categoria === filtro; });
     gridEl.innerHTML = items.map(function(c){
       return '<a class="pr-card" href="producciones/' + esc(c.slug) + '" data-link>' +
