@@ -50,7 +50,7 @@ var CATEGORIAS = ['Indumentaria', 'Deportes', 'Accesorios', 'Hogar', 'Gastronom√
 var CAMPANAS = [
    {
 id: 10,
-slug: 'camisalindo'
+slug: 'camisalino'
 ,
 titulo: 'Antonio Saiello'
 ,
