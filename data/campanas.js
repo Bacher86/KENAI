@@ -48,6 +48,47 @@
 var CATEGORIAS = ['Indumentaria', 'Deportes', 'Accesorios', 'Hogar', 'Gastronomía'];
 
 var CAMPANAS = [
+  {
+    "id": 11,
+    "slug": "reloj-citizen",
+    "titulo": "Reloj Citizen",
+    "categoria": "Accesorios",
+    "descripcionCorta": "De una foto sobre la mesa a una campaña elegante para el Citizen Eco-Drive.",
+    "descripcionCampana": [
+      "El punto de partida fue una foto del reloj apoyado sobre una mesa. La idea fue mostrar el Citizen Eco-Drive como un accesorio de vestir, con la esfera negra y el brazalete metálico en primer plano.",
+      "La luz azul de la portada define el contorno del reloj. Los reflejos cálidos y el mármol oscuro resaltan el metal, y la toma en la muñeca muestra cómo queda con un traje."
+    ],
+    "portada": "reloj-citizen-portada.jpg",
+    "antes": "reloj-citizen-previo.jpg",
+    "fotos": [
+      {
+        "src": "reloj-citizen-portada.jpg",
+        "alt": "Reloj Citizen Eco-Drive de esfera negra y brazalete metálico sobre fondo azul"
+      },
+      {
+        "src": "reloj-citizen-luz-calida.jpg",
+        "alt": "Primer plano del reloj Citizen bajo luz cálida, junto a un vaso de cristal"
+      },
+      {
+        "src": "reloj-citizen-marmol-negro.jpg",
+        "alt": "Reloj Citizen de pie sobre mármol negro pulido, con el brazalete reflejado en la superficie"
+      },
+      {
+        "src": "reloj-citizen-marmol-oscuro.jpg",
+        "alt": "Esfera del Citizen en primer plano sobre mármol oscuro, con reflejos dorados"
+      },
+      {
+        "src": "reloj-citizen-traje.jpg",
+        "alt": "Reloj Citizen en la muñeca junto al puño blanco de una camisa y un traje negro"
+      },
+      {
+        "src": "reloj-citizen-accesorios.jpg",
+        "alt": "Reloj Citizen sobre una mesa junto a gemelos, una billetera de cuero y un saco"
+      }
+    ],
+    "destacada": false,
+    "ia": false
+  },
    {
     id: 10,
     slug: 'camisalino',
