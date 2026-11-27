@@ -7,15 +7,26 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- datos ---------- */
-  var datosOk = Array.isArray(window.CAMPANAS);
-  if (!datosOk){
-    /* data/campanas.js tiene un error de escritura (falta una coma, una comilla o una llave) */
-    var g = document.getElementById('grid');
-    if (g) g.innerHTML = '<p class="pr-notice" style="margin:0">No pudimos cargar las campañas en este momento. Volvé a intentar en unos minutos.</p>';
-    if (window.console) console.error('Kenai: data/campanas.js tiene un error de sintaxis. Revisá comillas, comas y llaves de la última campaña.');
+  var datosOk = false, lista = [], orden = [], cargaPendiente;
+  function cargarCampanas(){
+    if (cargaPendiente) return cargaPendiente;
+    cargaPendiente = new Promise(function(resolve){
+      var script = document.createElement('script');
+      script.src = BASE + 'data/campanas.js?v=' + Date.now();
+      function terminar(){
+        script.remove();
+        datosOk = Array.isArray(window.CAMPANAS);
+        if (datosOk){
+          lista = window.CAMPANAS.filter(function(c){ return c && c.slug && c.titulo; });
+          orden = window.CATEGORIAS || [];
+        }
+        resolve();
+      }
+      script.onload = script.onerror = terminar;
+      document.head.appendChild(script);
+    }).then(function(){ cargaPendiente = null; });
+    return cargaPendiente;
   }
-  var lista = (window.CAMPANAS || []).filter(function(c){ return c && c.slug && c.titulo; });
-  var orden = window.CATEGORIAS || [];
   function fotosDe(c){
     return (c.fotos || []).map(function(f, i){
       return typeof f === 'string' ? { src: f, alt: c.titulo + ', foto ' + (i + 1) } : { src: f.src, alt: f.alt || c.titulo + ', foto ' + (i + 1) };
@@ -119,7 +130,7 @@
   function route(opts){
     opts = opts || {};
     var slug = slugActual(), i = slug ? bySlug(slug) : -1;
-    $('notFound').hidden = !(slug && i < 0);
+    $('notFound').hidden = !(datosOk && slug && i < 0);
     if (i > -1){
       renderCampana(i); mostrar(viewCampaign);
       window.scrollTo(0, 0);
@@ -130,18 +141,34 @@
     }
     if (opts.focus) app.focus({ preventScroll: true });
   }
+  var ultimaNavegacion = 0;
+  function actualizarVista(opts){
+    var navegacion = ++ultimaNavegacion;
+    cargarCampanas().then(function(){
+      if (navegacion !== ultimaNavegacion) return;
+      if (datosOk){
+        if (filtro !== 'Todos' && categoriasPresentes().cats.indexOf(filtro) < 0) filtro = 'Todos';
+        renderFiltros();
+        renderGrid();
+      } else {
+        gridEl.innerHTML = '<p class="pr-notice">No pudimos cargar las campañas. Volvé a intentar en unos minutos.</p>';
+      }
+      route(opts);
+    });
+  }
   function ir(href){
     if (!viewGrid.hidden) scrollGrid = window.scrollY;
     var volviendo = /producciones\/?$/.test(href);
     history.pushState({}, '', BASE + href.replace(/^\//, ''));
-    route({ restore: volviendo, focus: true });
+    actualizarVista({ restore: volviendo, focus: true });
   }
   document.addEventListener('click', function(e){
     var a = e.target.closest('a[data-link]');
     if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
     e.preventDefault(); ir(a.getAttribute('href'));
   });
-  window.addEventListener('popstate', function(){ route({ restore: true }); });
+  window.addEventListener('popstate', function(){ actualizarVista({ restore: true }); });
+  window.addEventListener('pageshow', function(e){ if (e.persisted) actualizarVista({ restore: true }); });
 
   /* Si se llegó desde 404.html (?c=slug), deja la dirección linda: /producciones/slug */
   (function(){
@@ -194,5 +221,5 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 
   /* ---------- arranque ---------- */
-  renderFiltros(); renderGrid(); route(); onScroll();
+  actualizarVista(); onScroll();
 })();
