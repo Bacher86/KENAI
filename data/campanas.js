@@ -140,7 +140,9 @@ var CAMPANAS = [
     fotos: [
       { src: 'remera-capot.jpg', alt: 'Espalda de la remera Masashi 98 Turbo sobre el capot de un auto deportivo rojo' },
       { src: 'remera-taller.jpg', alt: 'Remera negra colgada en un taller de autos, con el logo Masashi en el pecho' },
-      { src: 'remera-flatlay.jpg', alt: 'Remeras Masashi sobre el asfalto junto a un casco, una llave y una herramienta' }
+      { src: 'remera-flatlay.jpg', alt: 'Remeras Masashi sobre el asfalto junto a un casco, una llave y una herramienta' },
+      { src: 'remera-retrato-urbano.jpg', alt: 'Modelo con la remera negra Masashi 98 Turbo, agachado junto a un auto con llanta dorada al atardecer' },
+      { src: 'remera-encuentro-nocturno.jpg', alt: 'Modelo de espaldas con la remera Masashi 98 Turbo junto a un auto rojo en un encuentro nocturno entre contenedores' }
     ],
     destacada: false,
     ia: false
