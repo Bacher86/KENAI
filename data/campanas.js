@@ -137,6 +137,7 @@ var CAMPANAS = [
       'Llevamos las remeras a su terreno: colgadas en un taller, apoyadas sobre el capot de un deportivo rojo y armadas con casco, llaves y herramientas. Cada escena muestra el diseño de frente y de espalda sin perder la actitud.'
     ],
     portada: 'remera-capot.jpg',
+    antes: 'remera-masashi-previo.jpeg',
     fotos: [
       { src: 'remera-capot.jpg', alt: 'Espalda de la remera Masashi 98 Turbo sobre el capot de un auto deportivo rojo' },
       { src: 'remera-taller.jpg', alt: 'Remera negra colgada en un taller de autos, con el logo Masashi en el pecho' },
