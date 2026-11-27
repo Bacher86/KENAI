@@ -185,12 +185,11 @@
     if (Math.abs(dx) > 45) mover(dx < 0 ? 1 : -1);
   });
 
-  /* ---------- encabezado y botón flotante ---------- */
-  var top = $('top'), floatBtn = $('float');
+  /* ---------- encabezado ---------- */
+  var top = $('top');
   function onScroll(){
     var y = window.scrollY;
     top.classList.toggle('scrolled', y > 20);
-    floatBtn.classList.toggle('show', y > 420);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 

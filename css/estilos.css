@@ -185,13 +185,10 @@ p{margin:0}
 .note{margin-top:28px;font-size:14px;color:#6B655C}
 .sample{align-self:flex-start;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:#EFE7DA;color:#6B655C}
 
-/* ---------- floating CTA ---------- */
-.float{position:fixed;right:clamp(14px,3vw,32px);bottom:clamp(14px,3vw,32px);z-index:70;display:flex;align-items:center;gap:10px;min-height:52px;padding:0 22px 0 16px;border-radius:999px;background:var(--montana);color:var(--nieve);text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 12px 30px rgba(0,0,0,.3);transform:translateY(140%);transition:transform .5s cubic-bezier(.2,.8,.2,1),background .3s ease}
-.float.show{transform:none}
-.float:hover{background:var(--sol)}
-.float i{width:12px;height:12px;border-radius:50%;background:var(--sol);box-shadow:0 0 0 0 rgba(200,64,47,.6);animation:pulse 2.4s ease-out infinite}
-.float:hover i{background:var(--nieve)}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,64,47,.6)}70%{box-shadow:0 0 0 12px rgba(200,64,47,0)}100%{box-shadow:0 0 0 0 rgba(200,64,47,0)}}
+/* ---------- floating WhatsApp link ---------- */
+.float{position:fixed;right:max(clamp(14px,3vw,32px),env(safe-area-inset-right));bottom:max(clamp(14px,3vw,32px),env(safe-area-inset-bottom));z-index:70;display:inline-flex;align-items:center;min-height:52px;padding:0 20px;border-radius:999px;background:#087544;color:#fff;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 12px 30px rgba(0,0,0,.3);transition:background .3s ease}
+.float:hover{background:#065d36}
+.float:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 7px #065d36}
 
 /* ---------- contact (full day) ---------- */
 .contact{background:var(--luz);color:var(--montana);padding:clamp(90px,11vw,160px) var(--gutter)}

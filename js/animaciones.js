@@ -185,16 +185,6 @@
     });
   });
 
-  /* floating CTA: after the hero, hidden at contact */
-  var floatBtn=document.getElementById('float'), contactSec=document.getElementById('contacto');
-  function floatUpdate(){
-    var past=hero.getBoundingClientRect().bottom<0;
-    var atContact=contactSec.getBoundingClientRect().top<window.innerHeight*.8;
-    floatBtn.classList.toggle('show',past&&!atContact);
-  }
-  window.addEventListener('scroll',floatUpdate,{passive:true});
-  floatUpdate();
-
   /* chips + form */
   document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')==='true'?'false':'true');});});
   /* El formulario manda la consulta por FormSubmit (formsubmit.co) a kenaistudio.arg@gmail.com.
