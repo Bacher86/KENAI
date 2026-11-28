@@ -81,9 +81,8 @@ p{margin:0}
 
 /* ---------- story / about / services ---------- */
 .story-sec{background:linear-gradient(180deg,#21171A 0%,#2A1918 100%);padding:clamp(40px,6vw,90px) var(--gutter) clamp(100px,12vw,180px)}
-.story-sec{scroll-margin-top:76px}
-.problem-label{display:flex;align-items:center;gap:clamp(12px,2.2vw,32px);margin:0 0 clamp(22px,3vw,42px);color:var(--nieve);font:700 clamp(44px,7vw,104px)/1.04 var(--display);letter-spacing:-.035em}
-.problem-label::before{content:"";flex:0 0 clamp(24px,6vw,92px);height:3px;background:#F07A62}
+#nosotros{scroll-margin-top:76px}
+.problem-label{margin:0 0 24px}
 .problem-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,30px)}
 .problem-point,.problem-answer{padding:clamp(24px,3.8vw,58px);border:1px solid rgba(244,239,230,.17)}
 .problem-point{background:#2d2020}
@@ -91,11 +90,12 @@ p{margin:0}
 .problem-point h3{font-size:clamp(28px,3.3vw,49px);max-width:18ch}
 .problem-point p,.problem-answer p{margin:16px 0 0;max-width:49ch;color:#E4D8CE;font-size:clamp(16px,1.45vw,20px)}
 .problem-answer{margin-top:clamp(14px,2vw,30px);border-left:4px solid #F07A62;background:linear-gradient(115deg,#502720,#30201e)}
-.problem-answer h3{color:#F9A794;font-size:clamp(34px,5.6vw,80px)}
+.problem-answer h3{color:#F9A794;font-size:clamp(30px,4.7vw,66px)}
 @media(max-width:680px){.problem-grid{grid-template-columns:1fr}}
 .about{margin-top:clamp(76px,10vw,150px);padding-top:clamp(32px,5vw,72px);border-top:1px solid rgba(244,239,230,.2)}
 .about-intro{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(24px,6vw,90px);align-items:center}
-.about-label{margin:0 0 14px;color:#F4A492;font:700 .85rem/1.4 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.about-label{margin:0 0 14px}
+.problem-label,.about-label{color:#F4A492;font:700 .85rem/1.4 var(--body);letter-spacing:.14em;text-transform:uppercase}
 .about-headline{margin:0;max-width:16ch;font:700 clamp(36px,5.8vw,82px)/1.05 var(--display);letter-spacing:-.035em;text-wrap:balance}
 .about-lead{margin:20px 0 0;max-width:51ch;color:#E4D8CE;font-size:clamp(16px,1.38vw,20px)}
 .about-photo{display:grid;gap:10px;color:var(--nieve);text-decoration:none}
