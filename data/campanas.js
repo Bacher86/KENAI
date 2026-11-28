@@ -49,6 +49,133 @@ var CATEGORIAS = ['Indumentaria', 'Deportes', 'Accesorios', 'Hogar', 'Gastronom�
 
 var CAMPANAS = [
   {
+    "id": 14,
+    "slug": "traje-de-bano-fila",
+    "titulo": "Traje de baño FILA",
+    "categoria": "Indumentaria",
+    "descripcionCorta": "Un traje de baño azul marino en una campaña de verano junto a la pileta.",
+    "descripcionCampana": [
+      "El punto de partida fue una foto del traje de baño sobre la cama. Lo llevamos a una escena de verano para mostrar cómo queda puesto y darle contexto al producto.",
+      "Las tomas junto al agua muestran el calce de frente y de espalda. Los planos de producto acercan los cordones, el interior rojo y el parche bordado."
+    ],
+    "portada": "traje-de-bano-fila-1.jpg",
+    "antes": "traje-de-bano-fila-antes.jpg",
+    "fotos": [
+      {
+        "src": "traje-de-bano-fila-1.jpg",
+        "alt": "Modelo con el traje de baño FILA azul marino en una reposera junto a la pileta"
+      },
+      {
+        "src": "traje-de-bano-fila-2.jpg",
+        "alt": "Vista frontal del traje de baño puesto, con gotas de agua y las manos en los bolsillos"
+      },
+      {
+        "src": "traje-de-bano-fila-3.jpg",
+        "alt": "Modelo de espaldas junto a la pileta, con el bolsillo trasero a la vista"
+      },
+      {
+        "src": "traje-de-bano-fila-4.jpg",
+        "alt": "Traje de baño azul marino extendido sobre un bloque de piedra junto al agua"
+      },
+      {
+        "src": "traje-de-bano-fila-5.jpg",
+        "alt": "Traje de baño FILA sobre baldosas, con los cordones claros y la cintura roja a la vista"
+      },
+      {
+        "src": "traje-de-bano-fila-6.jpg",
+        "alt": "Primer plano del parche bordado y las gotas sobre la tela, junto a una toalla blanca"
+      }
+    ],
+    "destacada": false,
+    "ia": false
+  },
+  {
+    "id": 13,
+    "slug": "buzo-marron",
+    "titulo": "Buzo marrón",
+    "categoria": "Indumentaria",
+    "descripcionCorta": "Un buzo color chocolate entre luces nocturnas, reflejos y calles mojadas.",
+    "descripcionCampana": [
+      "Partimos de una foto del buzo sobre la cama y lo llevamos a la ciudad de noche. Los retratos muestran cómo cae la prenda y cómo contrasta la franja clara con el marrón chocolate.",
+      "Las tomas de producto alternan la prenda completa con detalles del cuello, el cierre metálico y el bordado marfil."
+    ],
+    "portada": "buzo-marron-1.jpg",
+    "antes": "buzo-marron-antes.jpg",
+    "fotos": [
+      {
+        "src": "buzo-marron-1.jpg",
+        "alt": "Modelo con el brazo apoyado en una baranda, con el buzo marrón y la ciudad iluminada detrás"
+      },
+      {
+        "src": "buzo-marron-2.jpg",
+        "alt": "Modelo con buzo marrón mirando hacia una avenida mojada de noche"
+      },
+      {
+        "src": "buzo-marron-3.jpg",
+        "alt": "Vista de espalda del buzo marrón junto a una vidriera iluminada"
+      },
+      {
+        "src": "buzo-marron-4.jpg",
+        "alt": "Buzo doblado sobre el capó mojado de un auto, junto a guantes y un vaso de café"
+      },
+      {
+        "src": "buzo-marron-5.jpg",
+        "alt": "Buzo marrón colgado de una baranda con luces urbanas al fondo"
+      },
+      {
+        "src": "buzo-marron-6.jpg",
+        "alt": "Buzo extendido sobre una superficie de piedra bajo luz cálida"
+      },
+      {
+        "src": "buzo-marron-7.jpg",
+        "alt": "Detalle del cuello, el cierre metálico y el bordado del buzo"
+      },
+      {
+        "src": "buzo-marron-8.jpg",
+        "alt": "Primer plano del bordado marfil de un ciclista sobre la tela marrón"
+      }
+    ],
+    "destacada": false,
+    "ia": false
+  },
+  {
+    "id": 12,
+    "slug": "silla-comedor",
+    "titulo": "Silla de comedor",
+    "categoria": "Hogar",
+    "descripcionCorta": "Una silla clásica de madera y jacquard en interiores iluminados por el sol.",
+    "descripcionCampana": [
+      "Partimos de una foto de la silla junto al sillón. La campaña la muestra en interiores con luz natural, con espacio para apreciar la curva del respaldo y el acabado de la madera.",
+      "Las escenas junto a la ventana y la chimenea muestran cómo encaja la silla en distintos ambientes. El primer plano acerca el dibujo geométrico y la textura del tapizado."
+    ],
+    "portada": "silla-comedor-1.jpg",
+    "antes": "silla-comedor-antes.jpg",
+    "fotos": [
+      {
+        "src": "silla-comedor-1.jpg",
+        "alt": "Silla clásica de madera con asiento geométrico frente a una pared con molduras"
+      },
+      {
+        "src": "silla-comedor-2.jpg",
+        "alt": "Mujer leyendo sentada en la silla junto a una ventana luminosa"
+      },
+      {
+        "src": "silla-comedor-3.jpg",
+        "alt": "Silla en un rincón con una mesa de mármol, una taza y un libro"
+      },
+      {
+        "src": "silla-comedor-4.jpg",
+        "alt": "Vista lateral de la silla junto a una chimenea de mármol"
+      },
+      {
+        "src": "silla-comedor-5.jpg",
+        "alt": "Detalle del tapizado jacquard geométrico y el borde de madera pulida"
+      }
+    ],
+    "destacada": false,
+    "ia": false
+  },
+  {
     "id": 11,
     "slug": "reloj-citizen",
     "titulo": "Reloj Citizen",
