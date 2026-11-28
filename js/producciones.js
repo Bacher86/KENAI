@@ -17,7 +17,7 @@
         script.remove();
         datosOk = Array.isArray(window.CAMPANAS);
         if (datosOk){
-          lista = window.CAMPANAS.filter(function(c){ return c && c.slug && c.titulo; });
+          lista = window.CAMPANAS.filter(function(c){ return c && !c.oculta && c.slug && c.titulo; });
           orden = window.CATEGORIAS || [];
         }
         resolve();

@@ -38,7 +38,7 @@
        { src: 'nombre-de-la-campana-1.jpg', alt: 'Qué se ve en la foto' },
        { src: 'nombre-de-la-campana-2.jpg', alt: 'Qué se ve en la foto' }
      ],
-     destacada: false,               // true = aparece en el inicio (conviene que sean 4)
+     destacada: true,               // true = aparece en el inicio (conviene que sean 4)
      ia: false                       // true = muestra el aviso "Escenas potenciadas con IA"
    },
    ===================================================================== */
@@ -86,7 +86,7 @@ var CAMPANAS = [
         "alt": "Primer plano del parche bordado y las gotas sobre la tela, junto a una toalla blanca"
       }
     ],
-    "destacada": false,
+    "destacada": true,
     "ia": false
   },
   {
@@ -135,7 +135,7 @@ var CAMPANAS = [
         "alt": "Primer plano del bordado marfil de un ciclista sobre la tela marrón"
       }
     ],
-    "destacada": false,
+    "destacada": true,
     "ia": false
   },
   {
@@ -172,7 +172,7 @@ var CAMPANAS = [
         "alt": "Detalle del tapizado jacquard geométrico y el borde de madera pulida"
       }
     ],
-    "destacada": false,
+    "destacada": true,
     "ia": false
   },
   {
@@ -213,7 +213,7 @@ var CAMPANAS = [
         "alt": "Reloj Citizen sobre una mesa junto a gemelos, una billetera de cuero y un saco"
       }
     ],
-    "destacada": false,
+    "destacada": true,
     "ia": false
   },
    {
@@ -250,7 +250,7 @@ var CAMPANAS = [
         alt: 'Modelo sentado en una terraza panorámica frente a Positano disfrutando de un Aperol Spritz mientras viste la camisa de lino beige crudo Antonio Saiello con mangas remangadas' 
       }
     ],
-    destacada: false,
+    destacada: true,
     ia: true
   },
   {
@@ -272,7 +272,7 @@ var CAMPANAS = [
       { src: 'remera-retrato-urbano.jpg', alt: 'Modelo con la remera negra Masashi 98 Turbo, agachado junto a un auto con llanta dorada al atardecer' },
       { src: 'remera-encuentro-nocturno.jpg', alt: 'Modelo de espaldas con la remera Masashi 98 Turbo junto a un auto rojo en un encuentro nocturno entre contenedores' }
     ],
-    destacada: false,
+    destacada: true,
     ia: false
   },
   {
@@ -338,7 +338,8 @@ var CAMPANAS = [
       { src: 'calzado-despues-4.jpg', alt: 'Mujer en un café con las sandalias puestas y los usos del calzado' },
       { src: 'calzado-despues-5.jpg', alt: 'La sandalia sobre fondo bordó con detalles de hebilla, brillo, plantilla y taco' }
     ],
-    destacada: true,
+    destacada: false,
+    oculta: true,
     ia: true
   },
   {
@@ -356,7 +357,8 @@ var CAMPANAS = [
     fotos: [
       { src: 'maraton-despues.jpg', alt: 'Corredora festejando con su medalla frente al espejo del gimnasio' }
     ],
-    destacada: true,
+    destacada: false,
+    oculta: true,
     ia: false
   },
   {
@@ -375,6 +377,7 @@ var CAMPANAS = [
       { src: 'gym-despues.jpg', alt: 'Adultos mayores entrenando con pesas mientras un nene salta en el reflejo' }
     ],
     destacada: false,
+    oculta: true,
     ia: false
   },
   {
@@ -393,6 +396,7 @@ var CAMPANAS = [
       { src: 'anteojos-despues.jpg', alt: 'Anteojos de sol sobre la nieve con montañas de fondo' }
     ],
     destacada: false,
+    oculta: true,
     ia: false
   },
   {
@@ -411,6 +415,7 @@ var CAMPANAS = [
       { src: 'buho-familia-despues.jpg', alt: 'Mamá y dos chicos durmiendo abrazados a sus peluches' }
     ],
     destacada: false,
+    oculta: true,
     ia: false
   },
   {
@@ -429,6 +434,7 @@ var CAMPANAS = [
       { src: 'buho-regalo-despues.jpg', alt: 'Abuela regalando un peluche de búho a su nieto' }
     ],
     destacada: false,
+    oculta: true,
     ia: false
   }
 ];

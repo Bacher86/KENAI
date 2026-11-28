@@ -8,7 +8,8 @@ Dirección: **https://kenaistudio.com.ar** (el dominio está en DonWeb y apunta 
 
 - Página: **kenaistudio.com.ar/producciones** · cada campaña: **/producciones/nombre-de-la-campana**
 - Todas las campañas están en **`data/campanas.js`**. Para sumar una, seguí las instrucciones que están arriba de todo en ese archivo (o la guía "Cómo subir una campaña nueva").
-- Las campañas con `destacada: true` aparecen en el inicio (máximo 4).
+- Las campañas visibles con `destacada: true` aparecen en el inicio.
+- Usá `oculta: true` para retirar una campaña del sitio conservando sus datos y fotos en el repositorio.
 - No toques `producciones/index.html`, `js/producciones.js` ni `404.html`: se arman solos a partir de los datos.
 
 ## Qué hay en cada archivo
